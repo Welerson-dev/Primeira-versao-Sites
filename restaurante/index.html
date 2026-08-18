@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra Restaurante — Cozinha Autoral</title>
+  <meta name="description" content="Terra: ingredientes do campo à mesa, cozinha autoral com identidade própria. Reserve sua mesa e descubra sabores que contam histórias." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ===================== TERRA — DESIGN TOKENS (terroso) ===================== */
+    :root {
+      --t-dark:   #2C1A0E;
+      --t-mid:    #7A4A28;
+      --t-light:  #A0622A;
+      --t-cream:  #F5E6C8;
+      --t-cream2: #FDF3E3;
+      --t-gold:   #C8920A;
+      --t-gold-l: #E5A80E;
+      --t-white:  #FEFAF4;
+      --t-warm:   #D4843A;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'Inter', -apple-system, sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--t-dark);
+      background: var(--t-cream);
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+
+    :focus-visible {
+      outline: 2px solid var(--t-gold);
+      outline-offset: 3px;
+    }
+
+    /* ===================== BACK BADGE ===================== */
+    .back-badge {
+      position: fixed;
+      top: 20px;
+      left: 24px;
+      z-index: 200;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(239,224,201,0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(62,39,35,0.15);
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--t-mid);
+      transition: all 200ms;
+    }
+    .back-badge:hover {
+      background: var(--t-dark);
+      color: var(--t-cream);
+      border-color: transparent;
+    }
+    .back-badge svg { width: 14px; height: 14px; }
+
+    /* ===================== HEADER ===================== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(62,39,35,0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--t-gold);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(239,224,201,0.6);
+      transition: color 150ms;
+    }
+
+    .nav-links a:hover { color: var(--t-cream); }
+
+    .nav-reserve {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--t-gold);
+      color: var(--t-dark);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 200ms;
+    }
+
+    .nav-reserve:hover { background: var(--t-gold-l); }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100vh;
+      background: var(--t-dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-texture {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(184,134,11,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(111,78,55,0.08) 0%, transparent 40%);
+    }
+
+    .hero-left {
+      padding: 80px 60px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--t-gold);
+      font-weight: 500;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--t-cream);
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--t-gold);
+      display: block;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(239,224,201,0.6);
+      max-width: 400px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--t-gold);
+      color: var(--t-dark);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 200ms, transform 200ms;
+    }
+
+    .btn-gold:hover { background: var(--t-gold-l); transform: translateY(-2px); }
+
+    .btn-outline-cream {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid rgba(239,224,201,0.25);
+      color: rgba(239,224,201,0.6);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      transition: all 200ms;
+    }
+
+    .btn-outline-cream:hover { border-color: var(--t-cream); color: var(--t-cream); }
+
+    .hero-awards {
+      display: flex;
+      gap: 32px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(239,224,201,0.08);
+    }
+
+    .award-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .award-icon { font-size: 16px; }
+
+    .award-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(239,224,201,0.4);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-dish-visual {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--t-mid) 0%, var(--t-dark) 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Decorative dish shapes using CSS */
+    .dish-circle-outer {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,134,11,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .dish-circle-inner {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(111,78,55,0.4), rgba(184,134,11,0.15));
+      border: 1px solid rgba(184,134,11,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dish-center {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--t-gold);
+      opacity: 0.25;
+    }
+
+    .dish-garnish {
+      position: absolute;
+    }
+
+    .dish-garnish-1 {
+      width: 6px; height: 40px;
+      background: var(--t-gold);
+      opacity: 0.4;
+      border-radius: 3px;
+      top: -20px; left: 50%;
+      transform: translateX(-50%) rotate(15deg);
+    }
+
+    .dish-garnish-2 {
+      width: 6px; height: 30px;
+      background: var(--t-gold);
+      opacity: 0.3;
+      border-radius: 3px;
+      top: -15px; left: 58%;
+      transform: rotate(-10deg);
+    }
+
+    .hero-image-caption {
+      position: absolute;
+      bottom: 32px;
+      left: 40px;
+      right: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .hero-image-caption span {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(239,224,201,0.3);
+    }
+
+    /* ===================== INFO BAR ===================== */
+    .info-bar {
+      background: var(--t-gold);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 0;
+    }
+
+    .info-item {
+      padding: 22px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      border-right: 1px solid rgba(62,39,35,0.15);
+    }
+
+    .info-item:last-child { border: none; }
+
+    .info-label {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(62,39,35,0.5);
+      font-weight: 600;
+    }
+
+    .info-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--t-dark);
+    }
+
+    /* ===================== ABOUT ===================== */
+    .section-about {
+      padding: 100px 80px;
+      background: var(--t-cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .about-text-col { }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--t-gold);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--t-dark);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .section-title em { font-style: italic; color: var(--t-mid); }
+
+    .about-body {
+      font-size: 15px;
+      color: var(--t-light);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .about-signature {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--t-mid);
+    }
+
+    .about-values {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .value-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--t-cream2);
+      border-left: 3px solid var(--t-gold);
+    }
+
+    .value-icon { font-size: 22px; flex-shrink: 0; }
+
+    .value-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--t-dark);
+      margin-bottom: 6px;
+    }
+
+    .value-desc {
+      font-size: 13px;
+      color: var(--t-light);
+      line-height: 1.6;
+    }
+
+    /* ===================== MENU ===================== */
+    .section-menu {
+      background: var(--t-dark);
+      padding: 100px 80px;
+    }
+
+    .section-title-light {
+      color: var(--t-cream);
+    }
+
+    .menu-categories {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .menu-cat-btn {
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid rgba(239,224,201,0.15);
+      color: rgba(239,224,201,0.45);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 200ms;
+      font-family: var(--font-body);
+    }
+
+    .menu-cat-btn:hover,
+    .menu-cat-btn.active {
+      background: var(--t-gold);
+      border-color: var(--t-gold);
+      color: var(--t-dark);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .menu-item {
+      background: rgba(255,255,255,0.03);
+      padding: 32px 36px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(239,224,201,0.04);
+      transition: background 200ms;
+    }
+
+    .menu-item:hover { background: rgba(255,255,255,0.05); }
+
+    .menu-item-info { flex: 1; }
+
+    .menu-item-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--t-cream);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .menu-item-desc {
+      font-size: 13px;
+      color: rgba(239,224,201,0.45);
+      line-height: 1.6;
+    }
+
+    .menu-item-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .menu-tag {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border: 1px solid rgba(184,134,11,0.3);
+      color: var(--t-gold);
+      border-radius: 2px;
+    }
+
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--t-gold);
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===================== CHEFS ===================== */
+    .section-chefs {
+      padding: 100px 80px;
+      background: var(--t-cream2);
+    }
+
+    .chefs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .chef-visual {
+      aspect-ratio: 4/5;
+      background: var(--t-cream);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .chef-silhouette {
+      width: 55%;
+      height: 90%;
+      background: var(--t-mid);
+      opacity: 0.5;
+      clip-path: polygon(22% 0%, 78% 0%, 90% 5%, 96% 18%, 92% 40%, 100% 100%, 0% 100%, 8% 40%, 4% 18%, 10% 5%);
+    }
+
+    .chef-badge {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: var(--t-gold);
+      color: var(--t-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+    }
+
+    .chef-info { display: flex; flex-direction: column; gap: 20px; }
+
+    .chef-name {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--t-dark);
+    }
+
+    .chef-title {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--t-gold);
+      font-weight: 600;
+    }
+
+    .chef-bio {
+      font-size: 15px;
+      color: var(--t-light);
+      line-height: 1.75;
+    }
+
+    .chef-quote {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--t-mid);
+      line-height: 1.5;
+      padding-left: 20px;
+      border-left: 2px solid var(--t-gold);
+    }
+
+    /* ===================== RESERVAS ===================== */
+    .section-reservas {
+      background: var(--t-dark);
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .reservas-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--t-cream);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .reservas-info h2 em { font-style: italic; color: var(--t-gold); }
+
+    .reservas-info p {
+      font-size: 15px;
+      color: rgba(239,224,201,0.5);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hours-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(239,224,201,0.06);
+    }
+
+    .hours-day {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(239,224,201,0.4);
+    }
+
+    .hours-time {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--t-cream);
+    }
+
+    .reservas-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(239,224,201,0.35);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(239,224,201,0.1);
+      color: var(--t-cream);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 200ms;
+      appearance: none;
+    }
+
+    .form-input::placeholder { color: rgba(239,224,201,0.25); }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--t-gold);
+    }
+
+    .form-select { cursor: pointer; }
+
+    .form-select option { background: var(--t-dark); }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--t-gold);
+      color: var(--t-dark);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 200ms;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover { background: var(--t-gold-l); }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .section-testimonials {
+      padding: 100px 80px;
+      background: var(--t-cream);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .testimonial-card {
+      background: var(--t-cream2);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 3px solid var(--t-gold);
+    }
+
+    .testimonial-stars { color: var(--t-gold); letter-spacing: 2px; font-size: 13px; }
+
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--t-dark);
+      flex: 1;
+    }
+
+    .testimonial-footer strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--t-dark);
+    }
+
+    .testimonial-footer span {
+      font-size: 11px;
+      color: var(--t-light);
+    }
+
+    /* ===================== FOOTER ===================== */
+    .site-footer {
+      background: var(--t-dark);
+      padding: 80px 80px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(239,224,201,0.08);
+      margin-bottom: 40px;
+    }
+
+    .footer-logo-text {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--t-gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      color: rgba(239,224,201,0.4);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-col-title {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(239,224,201,0.3);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(239,224,201,0.4);
+      transition: color 150ms;
+    }
+
+    .footer-links a:hover { color: var(--t-cream); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: rgba(239,224,201,0.2);
+    }
+
+    .footer-prism a {
+      color: var(--t-gold);
+      transition: opacity 150ms;
+    }
+
+    .footer-prism a:hover { opacity: 0.7; }
+
+    /* Gold bottom bar */
+    .footer-gold-bar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--t-dark), var(--t-gold), var(--t-dark));
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
+      .site-header { padding: 18px 28px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 60px 36px; }
+      .hero-right { min-height: 360px; }
+      .section-about { grid-template-columns: 1fr; padding: 60px 36px; gap: 48px; }
+      .section-menu { padding: 60px 36px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .section-chefs { padding: 60px 36px; }
+      .chefs-grid { grid-template-columns: 1fr; }
+      .section-reservas { grid-template-columns: 1fr; padding: 60px 36px; gap: 48px; }
+      .section-testimonials { padding: 60px 36px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; padding: 0 0 40px; }
+      .site-footer { padding: 60px 36px 36px; }
+      .info-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-awards { flex-wrap: wrap; gap: 20px; }
+      .info-bar { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back to Prism -->
+  <a href="../index.html#vitrine" class="back-badge" aria-label="Voltar à vitrine Prism">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Prism Vitrine
+  </a>
+
+  <!-- Header -->
+  <header class="site-header" id="header">
+    <div class="logo">Terra</div>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#menu">Menu</a>
+      <a href="#chefs">Chefs</a>
+      <a href="#reservas">Reservas</a>
+    </nav>
+    <a href="#reservas" class="nav-reserve" id="header-reserve">Reservar mesa</a>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <div class="hero-bg-texture" aria-hidden="true"></div>
+
+      <div class="hero-left">
+        <p class="hero-eyebrow">Cozinha autoral brasileira</p>
+        <h1 class="hero-headline" id="hero-headline">
+          Feito com<br />terra<br /><em>e tempo.</em>
+        </h1>
+        <p class="hero-desc">
+          Ingredientes cultivados com cuidado, técnica que respeita a matéria-prima e o resultado que só o tempo pode dar.
+        </p>
+        <div class="hero-actions">
+          <a href="#reservas" class="btn-gold" id="hero-cta-reserve">Reservar mesa</a>
+          <a href="#menu" class="btn-outline-cream" id="hero-cta-menu">Ver cardápio</a>
+        </div>
+        <div class="hero-awards" aria-label="Premiações">
+          <div class="award-item">
+            <span class="award-icon" aria-hidden="true">🏆</span>
+            <span class="award-label">Melhor do Ano 2025</span>
+          </div>
+          <div class="award-item">
+            <span class="award-icon" aria-hidden="true">⭐</span>
+            <span class="award-label">4.9 no Google</span>
+          </div>
+          <div class="award-item">
+            <span class="award-icon" aria-hidden="true">🌿</span>
+            <span class="award-label">Farm-to-Table</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-dish-visual" aria-hidden="true" style="position:relative;overflow:hidden;border-radius:20px;height:480px;">
+          <img src="img/hero.jpg"
+               alt="Risoto com trufas — Terra Restaurante"
+               style="width:100%;height:100%;object-fit:cover;object-position:center;"
+               loading="eager" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,26,14,0) 40%,rgba(44,26,14,0.55) 100%);"></div>
+        </div>
+        <div class="hero-image-caption">
+          <span>Prato autoral</span>
+          <span>Temporada 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Bar -->
+    <div class="info-bar" aria-label="Informações do restaurante">
+      <div class="info-item">
+        <span class="info-label">Horário</span>
+        <span class="info-value">Ter–Dom 12h–23h</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Localização</span>
+        <span class="info-value">Vila Madalena, SP</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Reservas</span>
+        <span class="info-value">Online ou por telefone</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Avaliação</span>
+        <span class="info-value">★ 4.9 / 5.0</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="section-about" id="sobre" aria-labelledby="about-title">
+      <div class="about-text-col">
+        <p class="section-eyebrow">Nossa história</p>
+        <h2 class="section-title" id="about-title">
+          O alimento como<br /><em>narrativa.</em>
+        </h2>
+        <p class="about-body">
+          Terra nasceu de uma convicção simples: cozinha boa começa antes da cozinha — começa na terra, na relação com os produtores, no respeito ao ciclo natural de cada ingrediente.
+          <br /><br />
+          Trabalhamos com fornecedores locais e sazonais. O cardápio muda conforme o que a estação oferece de melhor. Não é limitação — é honestidade.
+        </p>
+        <span class="about-signature">Chef Marina Brandão</span>
+      </div>
+      <div class="about-values">
+        <div class="value-item">
+          <span class="value-icon" aria-hidden="true">🌾</span>
+          <div>
+            <p class="value-title">Ingredientes sazonais</p>
+            <p class="value-desc">Parcerias diretas com 12 produtores locais. O cardápio reflete o que está no pico da safra.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon" aria-hidden="true">🔥</span>
+          <div>
+            <p class="value-title">Técnica com propósito</p>
+            <p class="value-desc">Cada método aplicado tem um motivo claro: realçar, não mascarar o ingrediente.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon" aria-hidden="true">🍷</span>
+          <div>
+            <p class="value-title">Adega curada</p>
+            <p class="value-desc">Mais de 80 rótulos, com foco em vinhos naturais e pequenos produtores brasileiros.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="section-menu" id="menu" aria-labelledby="menu-title">
+      <p class="section-eyebrow" style="color:var(--t-gold)">Cardápio</p>
+      <h2 class="section-title section-title-light" id="menu-title">
+        Do campo à<br /><em style="color:var(--t-gold)">mesa.</em>
+      </h2>
+      <div class="menu-categories" role="tablist" aria-label="Categorias do menu">
+        <button class="menu-cat-btn active" type="button" role="tab">Entradas</button>
+        <button class="menu-cat-btn" type="button" role="tab">Pratos principais</button>
+        <button class="menu-cat-btn" type="button" role="tab">Sobremesas</button>
+        <button class="menu-cat-btn" type="button" role="tab">Vinhos</button>
+      </div>
+      <!-- Banner fotográfico do cardápio -->
+      <div style="width:100%;height:280px;overflow:hidden;border-radius:20px;margin-bottom:40px;position:relative;">
+        <img src="img/food2.jpg"
+             alt="Filé com redução de vinho — Terra Restaurante"
+             style="width:100%;height:100%;object-fit:cover;object-position:center;"
+             loading="lazy" />
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(44,26,14,0.75) 0%,transparent 60%);"></div>
+        <div style="position:absolute;top:50%;left:40px;transform:translateY(-50%);">
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t-gold);margin-bottom:8px;">Destaque da casa</p>
+          <h3 style="font-family:var(--font-display);font-size:2rem;color:#fff;font-weight:300;line-height:1.2;">Filé com redução<br /><em>de vinho tinto</em></h3>
+          <p style="color:rgba(245,230,200,0.8);font-size:14px;margin-top:8px;">R$ 92</p>
+        </div>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3 class="menu-item-name">Bruschetta de Figo & Gorgonzola</h3>
+            <p class="menu-item-desc">Pão artesanal grelhado, figo fresco da estação, gorgonzola cremoso e mel silvestre.</p>
+            <div class="menu-item-tags">
+              <span class="menu-tag">Vegetariano</span>
+              <span class="menu-tag">Sazonal</span>
+            </div>
+          </div>
+          <span class="menu-item-price">R$ 42</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3 class="menu-item-name">Carpaccio de Cogumelos</h3>
+            <p class="menu-item-desc">Cogumelos paris e shiitake em fatias finas, azeite de ervas e lascas de parmesão curado.</p>
+            <div class="menu-item-tags">
+              <span class="menu-tag">Vegano</span>
+            </div>
+          </div>
+          <span class="menu-item-price">R$ 54</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3 class="menu-item-name">Risoto de Porcini com Trufas</h3>
+            <p class="menu-item-desc">Arroz arbóreo, cogumelos porcini importados, manteiga de trufa negra e parmesão 36 meses.</p>
+            <div class="menu-item-tags">
+              <span class="menu-tag">Carro-chefe</span>
+            </div>
+          </div>
+          <span class="menu-item-price">R$ 86</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3 class="menu-item-name">Filé com Redução de Vinho Tinto</h3>
+            <p class="menu-item-desc">Corte mignon ao ponto exato, redução de Malbec, purê de mandioquinha e aspargos grelhados.</p>
+            <div class="menu-item-tags">
+              <span class="menu-tag">Premium</span>
+            </div>
+          </div>
+          <span class="menu-item-price">R$ 118</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3 class="menu-item-name">Pudim de Caramelo Artesanal</h3>
+            <p class="menu-item-desc">Receita de forno a lenha, caramelo feito na hora, compota de laranja Bahia.</p>
+            <div class="menu-item-tags">
+              <span class="menu-tag">Clássico</span>
+            </div>
+          </div>
+          <span class="menu-item-price">R$ 36</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3 class="menu-item-name">Mousse de Chocolate 70%</h3>
+            <p class="menu-item-desc">Chocolate single-origin brasileiro, creme de cachaça envelhecida, flor de sal.</p>
+            <div class="menu-item-tags">
+              <span class="menu-tag">Sem glúten</span>
+            </div>
+          </div>
+          <span class="menu-item-price">R$ 44</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chefs -->
+    <section class="section-chefs" id="chefs" aria-labelledby="chefs-title">
+      <p class="section-eyebrow">Quem cozinha</p>
+      <h2 class="section-title" id="chefs-title">A mão por <em>trás do prato.</em></h2>
+      <div class="chefs-grid">
+        <div class="chef-visual" style="position:relative;overflow:hidden;border-radius:20px;min-height:400px;">
+          <img src="img/ambiente.jpg"
+               alt="Interior do Terra Restaurante — ambiente aconchegante com velas e madeira"
+               style="width:100%;height:100%;object-fit:cover;object-position:center;min-height:400px;display:block;"
+               loading="lazy" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(44,26,14,0.7) 100%);"></div>
+          <span class="chef-badge" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);">Head Chef</span>
+        </div>
+        <div class="chef-info">
+          <div>
+            <p class="chef-title">Chef Executiva</p>
+            <h3 class="chef-name">Marina Brandão</h3>
+          </div>
+          <p class="chef-bio">
+            Formada pelo Le Cordon Bleu Paris, com passagens pelos restaurantes estrelados D.O.M. (São Paulo) e Mugaritz (Espanha). Marina voltou ao Brasil convicta: a cozinha brasileira tem vocabulário próprio que o mundo ainda está aprendendo a ouvir.
+          </p>
+          <blockquote class="chef-quote">
+            "Minha cozinha conta de onde vim — da feira, dos agricultores que conheço pelo nome, da memória afetiva que nenhuma técnica substituí."
+          </blockquote>
+          <a href="#reservas" class="btn-gold" style="align-self:flex-start" id="chef-cta">Reservar com a chef</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservas -->
+    <section class="section-reservas" id="reservas" aria-labelledby="reservas-title">
+      <div class="reservas-info">
+        <h2 id="reservas-title">
+          Reserve sua<br /><em>mesa.</em>
+        </h2>
+        <p>Experiências memoráveis precisam de planejamento. Reserve com antecedência — as mesas com vista para a cozinha esgotam primeiro.</p>
+        <div class="hours-grid" aria-label="Horários de funcionamento">
+          <div class="hours-item">
+            <span class="hours-day">Terça – Quinta</span>
+            <span class="hours-time">12h00 – 22h30</span>
+          </div>
+          <div class="hours-item">
+            <span class="hours-day">Sexta – Sábado</span>
+            <span class="hours-time">12h00 – 23h30</span>
+          </div>
+          <div class="hours-item">
+            <span class="hours-day">Domingo</span>
+            <span class="hours-time">12h00 – 17h00</span>
+          </div>
+          <div class="hours-item">
+            <span class="hours-day">Segunda-feira</span>
+            <span class="hours-time">Fechado</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="reservas-form" novalidate aria-label="Formulário de reserva">
+        <div>
+          <label class="form-label" for="res-name">Nome completo</label>
+          <input type="text" id="res-name" class="form-input" placeholder="Seu nome" autocomplete="name" required />
+        </div>
+        <div>
+          <label class="form-label" for="res-email">E-mail</label>
+          <input type="email" id="res-email" class="form-input" placeholder="seu@email.com" autocomplete="email" required />
+        </div>
+        <div class="form-row">
+          <div>
+            <label class="form-label" for="res-date">Data</label>
+            <input type="date" id="res-date" class="form-input" required />
+          </div>
+          <div>
+            <label class="form-label" for="res-time">Horário</label>
+            <select id="res-time" class="form-select" required>
+              <option value="" disabled selected>Selecionar...</option>
+              <option>12h00</option>
+              <option>13h00</option>
+              <option>19h00</option>
+              <option>20h00</option>
+              <option>21h00</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="form-label" for="res-guests">Número de pessoas</label>
+          <select id="res-guests" class="form-select" required>
+            <option value="" disabled selected>Quantas pessoas?</option>
+            <option>1 pessoa</option>
+            <option>2 pessoas</option>
+            <option>3 pessoas</option>
+            <option>4 pessoas</option>
+            <option>5 ou mais</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn" id="reserve-submit">Confirmar reserva</button>
+      </form>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-testimonials" aria-labelledby="testimonials-title">
+      <p class="section-eyebrow">Opinião dos clientes</p>
+      <h2 class="section-title" id="testimonials-title">O que <em>dizem quem provou.</em></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="testimonial-text">"O risoto de porcini foi a melhor coisa que comi em anos. A Marina transformou ingredientes simples em algo inesquecível."</p>
+          <footer class="testimonial-footer">
+            <strong>Carla Rodrigues</strong>
+            <span>Gastrônoma, SP</span>
+          </footer>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="testimonial-text">"Ambiente que abraça. Serviço que não pressiona. Comida que conta história. O Terra é único porque é honesto."</p>
+          <footer class="testimonial-footer">
+            <strong>Felipe Andrade</strong>
+            <span>Crítico gastronômico</span>
+          </footer>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+          <p class="testimonial-text">"Fui para um jantar de aniversário e saí com uma nova perspectiva sobre cozinha brasileira. Voltei três vezes no mesmo mês."</p>
+          <footer class="testimonial-footer">
+            <strong>Ana Paula Lima</strong>
+            <span>Cliente fiel</span>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-text">Terra</div>
+        <p class="footer-desc">Cozinha autoral com ingredientes sazonais e técnica com propósito. Vila Madalena, São Paulo.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Restaurante</p>
+        <nav class="footer-links" aria-label="Links restaurante">
+          <a href="#menu">Cardápio</a>
+          <a href="#sobre">Nossa história</a>
+          <a href="#chefs">Os chefs</a>
+          <a href="#reservas">Reservas</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Contato</p>
+        <nav class="footer-links" aria-label="Contato">
+          <a href="#">(11) 3456-7890</a>
+          <a href="#">contato@terra.rest</a>
+          <a href="#">Endereço</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Redes</p>
+        <nav class="footer-links" aria-label="Redes sociais">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">TripAdvisor</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Terra Restaurante. Todos os direitos reservados.</span>
+      <span class="footer-prism">Site criado por <a href="../index.html#vitrine">Prism</a></span>
+    </div>
+  </footer>
+  <div class="footer-gold-bar" aria-hidden="true"></div>
+
+</body>
+</html>
