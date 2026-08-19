@@ -362,15 +362,16 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   updateActive();
 })();
 
-// =============================================
-// 5. CONTACT FORM
-// =============================================
 (function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const btn = form.querySelector('#contact-submit');
     const originalText = btn.textContent;
     btn.textContent = 'Enviando...';
@@ -389,7 +390,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     }, 1200);
   });
 })();
-
 // =============================================
 // 6. HEADER SCROLL EFFECT
 // =============================================
