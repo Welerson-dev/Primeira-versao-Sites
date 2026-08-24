@@ -486,6 +486,26 @@
 
     .menu-item:hover { background: rgba(255,255,255,0.05); }
 
+    .menu-item-thumb {
+      width: 96px;
+      height: 96px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(184,134,11,0.25);
+      background: var(--t-dark);
+    }
+
+    .menu-item-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 300ms var(--ease-out);
+    }
+
+    .menu-item:hover .menu-item-thumb img { transform: scale(1.07); }
+
     .menu-item-info { flex: 1; }
 
     .menu-item-name {
@@ -870,6 +890,8 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .menu-item { padding: 24px 20px; }
+      .menu-item-thumb { width: 72px; height: 72px; }
       .hero-awards { flex-wrap: wrap; gap: 20px; }
       .info-bar { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -1033,6 +1055,9 @@
       </div>
       <div class="menu-grid">
         <div class="menu-item">
+          <div class="menu-item-thumb">
+            <img src="img/prato-bruschetta.jpg" alt="Bruschetta de Figo & Gorgonzola" loading="lazy" />
+          </div>
           <div class="menu-item-info">
             <h3 class="menu-item-name">Bruschetta de Figo & Gorgonzola</h3>
             <p class="menu-item-desc">Pão artesanal grelhado, figo fresco da estação, gorgonzola cremoso e mel silvestre.</p>
@@ -1044,6 +1069,9 @@
           <span class="menu-item-price">R$ 42</span>
         </div>
         <div class="menu-item">
+          <div class="menu-item-thumb">
+            <img src="img/prato-carpaccio.jpg" alt="Carpaccio de Cogumelos" loading="lazy" />
+          </div>
           <div class="menu-item-info">
             <h3 class="menu-item-name">Carpaccio de Cogumelos</h3>
             <p class="menu-item-desc">Cogumelos paris e shiitake em fatias finas, azeite de ervas e lascas de parmesão curado.</p>
@@ -1054,6 +1082,9 @@
           <span class="menu-item-price">R$ 54</span>
         </div>
         <div class="menu-item">
+          <div class="menu-item-thumb">
+            <img src="img/hero.jpg" alt="Risoto de Porcini com Trufas" loading="lazy" />
+          </div>
           <div class="menu-item-info">
             <h3 class="menu-item-name">Risoto de Porcini com Trufas</h3>
             <p class="menu-item-desc">Arroz arbóreo, cogumelos porcini importados, manteiga de trufa negra e parmesão 36 meses.</p>
@@ -1064,6 +1095,9 @@
           <span class="menu-item-price">R$ 86</span>
         </div>
         <div class="menu-item">
+          <div class="menu-item-thumb">
+            <img src="img/food2.jpg" alt="Filé com Redução de Vinho Tinto" loading="lazy" />
+          </div>
           <div class="menu-item-info">
             <h3 class="menu-item-name">Filé com Redução de Vinho Tinto</h3>
             <p class="menu-item-desc">Corte mignon ao ponto exato, redução de Malbec, purê de mandioquinha e aspargos grelhados.</p>
@@ -1074,6 +1108,9 @@
           <span class="menu-item-price">R$ 118</span>
         </div>
         <div class="menu-item">
+          <div class="menu-item-thumb">
+            <img src="img/prato-pudim.jpg" alt="Pudim de Caramelo Artesanal" loading="lazy" />
+          </div>
           <div class="menu-item-info">
             <h3 class="menu-item-name">Pudim de Caramelo Artesanal</h3>
             <p class="menu-item-desc">Receita de forno a lenha, caramelo feito na hora, compota de laranja Bahia.</p>
@@ -1084,6 +1121,9 @@
           <span class="menu-item-price">R$ 36</span>
         </div>
         <div class="menu-item">
+          <div class="menu-item-thumb">
+            <img src="img/prato-mousse.jpg" alt="Mousse de Chocolate 70%" loading="lazy" />
+          </div>
           <div class="menu-item-info">
             <h3 class="menu-item-name">Mousse de Chocolate 70%</h3>
             <p class="menu-item-desc">Chocolate single-origin brasileiro, creme de cachaça envelhecida, flor de sal.</p>
@@ -1102,12 +1142,10 @@
       <h2 class="section-title" id="chefs-title">A mão por <em>trás do prato.</em></h2>
       <div class="chefs-grid">
         <div class="chef-visual" style="position:relative;overflow:hidden;border-radius:20px;min-height:400px;">
-          <img src="img/ambiente.jpg"
-               alt="Interior do Terra Restaurante — ambiente aconchegante com velas e madeira"
-               style="width:100%;height:100%;object-fit:cover;object-position:center;min-height:400px;display:block;"
+          <img src="img/chef-marina.jpg"
+               alt="Chef Marina Brandão — Head Chef do Terra Restaurante"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;min-height:400px;display:block;"
                loading="lazy" />
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(44,26,14,0.7) 100%);"></div>
-          <span class="chef-badge" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);">Head Chef</span>
         </div>
         <div class="chef-info">
           <div>
