@@ -134,7 +134,7 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--noir-500);
+      color: var(--noir-700);
       transition: color 150ms;
     }
 
@@ -273,37 +273,6 @@
       min-height: 480px;
     }
 
-    /* Silhouette art usando CSS puro */
-    .silhouette-wrap {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 0;
-    }
-
-    .silhouette {
-      width: 55%;
-      height: 92%;
-      background: var(--noir-700);
-      clip-path: polygon(28% 0%, 72% 0%,
-          88% 4%, 95% 12%,
-          92% 30%,
-          85% 42%,
-          90% 55%,
-          98% 72%,
-          100% 100%,
-          0% 100%,
-          2% 72%,
-          10% 55%,
-          15% 42%,
-          8% 30%,
-          5% 12%,
-          12% 4%);
-      opacity: 0.85;
-    }
-
     .hero-info-strip {
       background: var(--noir-black);
       padding: 20px 40px;
@@ -352,7 +321,7 @@
     }
 
     .marquee-dot {
-      color: var(--noir-500) !important;
+      color: var(--noir-300) !important;
     }
 
     @keyframes marqueeScroll {
@@ -405,69 +374,25 @@
 
     .collection-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px 28px;
     }
 
     .product-card {
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      background: var(--noir-100);
     }
 
     .product-image {
       aspect-ratio: 3/4;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      background: var(--noir-100);
       overflow: hidden;
       transition: transform 500ms var(--ease-out);
     }
 
     .product-card:hover .product-image {
-      transform: scale(1.04);
-    }
-
-    .product-visual {
-      width: 60%;
-      height: 85%;
-      background: var(--noir-700);
-      align-self: flex-end;
-    }
-
-    /* Each product has a slightly different shape */
-    .pv-1 {
-      clip-path: polygon(15% 0%, 85% 0%, 95% 8%, 100% 100%, 0% 100%, 5% 8%);
-      opacity: 0.9;
-    }
-
-    .pv-2 {
-      clip-path: polygon(20% 0%, 80% 0%, 92% 5%, 95% 20%, 88% 45%, 100% 100%, 0% 100%, 12% 45%, 5% 20%, 8% 5%);
-      opacity: 0.75;
-    }
-
-    .pv-3 {
-      clip-path: polygon(25% 0%, 75% 0%, 88% 6%, 95% 22%, 90% 55%, 98% 100%, 2% 100%, 10% 55%, 5% 22%, 12% 6%);
-      opacity: 0.8;
-      background: #1a1a1a;
-    }
-
-    .pv-4 {
-      clip-path: polygon(18% 0%, 82% 0%, 94% 7%, 98% 30%, 92% 60%, 100% 100%, 0% 100%, 8% 60%, 2% 30%, 6% 7%);
-      opacity: 0.85;
-      background: #222;
-    }
-
-    .pv-5 {
-      clip-path: polygon(22% 0%, 78% 0%, 90% 5%, 97% 25%, 88% 50%, 95% 100%, 5% 100%, 12% 50%, 3% 25%, 10% 5%);
-      opacity: 0.7;
-    }
-
-    .pv-6 {
-      clip-path: polygon(20% 0%, 80% 0%, 93% 6%, 100% 18%, 95% 40%, 100% 100%, 0% 100%, 5% 40%, 0% 18%, 7% 6%);
-      opacity: 0.88;
-      background: #0a0a0a;
+      transform: scale(1.03);
     }
 
     .product-overlay {
@@ -485,15 +410,23 @@
     }
 
     .product-add {
-      font-size: 10px;
+      font-size: 9px;
+      font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--noir-white);
-      padding: 10px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: var(--noir-black);
+      background: var(--noir-white);
+      padding: 10px 22px;
+      border: 2px solid var(--noir-white);
+      cursor: pointer;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 300ms, transform 300ms var(--ease-out);
+      transition: opacity 300ms, transform 300ms var(--ease-out), background 200ms, color 200ms;
+    }
+
+    .product-add:hover {
+      background: transparent;
+      color: var(--noir-white);
     }
 
     .product-card:hover .product-add {
@@ -501,26 +434,408 @@
       transform: translateY(0);
     }
 
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 9px;
+    }
+
+    .badge-sale {
+      background: var(--noir-black);
+      color: var(--noir-white);
+    }
+
+    .badge-flag {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--noir-black);
+      color: var(--noir-black);
+    }
+
     .product-info {
-      padding: 18px 20px;
-      background: var(--noir-white);
-      border-top: 1px solid var(--noir-100);
+      padding: 14px 2px 0;
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .product-cat {
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--noir-500);
     }
 
     .product-name {
       font-size: 12px;
-      letter-spacing: 0.06em;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--noir-black);
+      border-bottom: 1px solid transparent;
+      transition: border-color 200ms;
+    }
+
+    .product-card:hover .product-name {
+      border-color: var(--noir-black);
+    }
+
+    .product-desc {
+      font-size: 11px;
+      line-height: 1.5;
       color: var(--noir-700);
     }
 
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
     .product-price {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--noir-black);
     }
+
+    .price-old {
+      font-size: 11px;
+      color: var(--noir-500);
+      text-decoration: line-through;
+    }
+
+    .installments {
+      font-size: 9px;
+      letter-spacing: 0.04em;
+      color: var(--noir-500);
+    }
+
+    .product-foot {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--noir-100);
+    }
+
+    .sizes {
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--noir-700);
+    }
+
+    .free-ship {
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--noir-white);
+      background: var(--noir-black);
+      padding: 3px 7px;
+    }
+
+    /* ===================== PRODUCT MODAL ===================== */
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(13, 13, 13, 0.6);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none;
+    }
+
+    .modal-box {
+      position: relative;
+      width: min(1040px, 100%);
+      max-height: calc(100vh - 64px);
+      background: var(--noir-white);
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      overflow: hidden;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      line-height: 1;
+      color: var(--noir-black);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--noir-300);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 200ms, color 200ms, border-color 200ms;
+    }
+
+    .modal-close:hover {
+      background: var(--noir-black);
+      color: var(--noir-white);
+      border-color: var(--noir-black);
+    }
+
+    .modal-gallery {
+      background: var(--noir-100);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .modal-main-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .modal-thumbs {
+      display: flex;
+      gap: 8px;
+      padding: 14px 16px;
+      margin-top: auto;
+    }
+
+    .modal-thumb {
+      width: 58px;
+      height: 72px;
+      padding: 0;
+      border: 1px solid transparent;
+      cursor: pointer;
+      opacity: 0.65;
+      overflow: hidden;
+      transition: opacity 150ms, border-color 150ms;
+    }
+
+    .modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-thumb:hover {
+      opacity: 1;
+    }
+
+    .modal-thumb.active {
+      opacity: 1;
+      border-color: var(--noir-black);
+    }
+
+    .modal-info {
+      padding: 48px 44px 40px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-info .product-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      text-transform: none;
+      letter-spacing: -0.01em;
+    }
+
+    .modal-info .product-desc {
+      font-size: 13px;
+    }
+
+    .modal-info .price-row {
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .modal-info .product-price {
+      font-size: 24px;
+    }
+
+    .modal-badge {
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .size-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 10px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--noir-700);
+    }
+
+    .size-hint {
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      font-style: italic;
+      text-transform: none;
+      color: var(--noir-black);
+      visibility: hidden;
+    }
+
+    .size-hint.show {
+      visibility: visible;
+    }
+
+    .size-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .size-chip {
+      min-width: 46px;
+      padding: 11px 12px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-align: center;
+      color: var(--noir-700);
+      background: var(--noir-white);
+      border: 1px solid var(--noir-300);
+      cursor: pointer;
+      transition: background 150ms, color 150ms, border-color 150ms;
+    }
+
+    .size-chip:hover {
+      border-color: var(--noir-black);
+      color: var(--noir-black);
+    }
+
+    .size-chip.selected {
+      background: var(--noir-black);
+      border-color: var(--noir-black);
+      color: var(--noir-white);
+    }
+
+    .modal-add-btn {
+      margin-top: 14px;
+      padding: 17px 28px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--noir-white);
+      background: var(--noir-black);
+      border: 2px solid var(--noir-black);
+      cursor: pointer;
+      transition: background 200ms, color 200ms;
+    }
+
+    .modal-add-btn:hover {
+      background: var(--noir-white);
+      color: var(--noir-black);
+    }
+
+    .modal-add-btn.added {
+      background: var(--noir-white);
+      color: var(--noir-black);
+    }
+
+    .modal-perks {
+      margin-top: 6px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--noir-100);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .modal-perks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--noir-700);
+    }
+
+    .modal-perks li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--noir-black);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .modal-details {
+      margin-top: 8px;
+    }
+
+    .modal-details div {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 9px 0;
+      border-top: 1px solid var(--noir-100);
+      font-size: 12px;
+    }
+
+    .modal-details dt {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--noir-500);
+    }
+
+    .modal-details dd {
+      text-align: right;
+      color: var(--noir-700);
+    }
+
+    @media (max-width: 1024px) {
+      .modal-backdrop {
+        padding: 0;
+        align-items: stretch;
+      }
+
+      .modal-box {
+        grid-template-columns: 1fr;
+        max-height: 100vh;
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .modal-gallery {
+        overflow: visible;
+      }
+
+      .modal-info {
+        padding: 36px 28px 40px;
+        overflow: visible;
+      }
+    }
+
 
     /* ===================== EDITORIAL STRIP ===================== */
     .editorial-strip {
@@ -530,35 +845,64 @@
 
     .ed-left {
       background: var(--noir-black);
-      padding: 100px 80px;
+      padding: 72px 68px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 32px;
+      gap: 22px;
     }
 
     .ed-label {
       font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--noir-500);
+      color: var(--noir-300);
     }
 
     .ed-quote {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3vw, 3rem);
+      font-size: clamp(1.6rem, 2.6vw, 2.5rem);
       font-weight: 200;
       font-style: italic;
-      line-height: 1.3;
+      line-height: 1.25;
       letter-spacing: -0.02em;
       color: var(--noir-white);
     }
 
-    .ed-sub {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--noir-500);
-      max-width: 380px;
+    .ed-body {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      max-width: 520px;
+    }
+
+    .ed-body p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--noir-300);
+    }
+
+    .ed-sign {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--noir-white);
+    }
+
+    .ed-sign em {
+      font-style: italic;
+    }
+
+    .ed-brand {
+      align-self: flex-start;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--noir-white);
+      border-top: 1px solid var(--noir-700);
+      padding-top: 16px;
     }
 
     .btn-white-outline {
@@ -589,22 +933,16 @@
       position: relative;
     }
 
-    .ed-visual {
-      width: 55%;
-      height: 80%;
-      background: var(--noir-950);
-      clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 0% 100%, 0% 35%);
-      opacity: 0.7;
-    }
-
     .ed-caption {
       position: absolute;
       bottom: 24px;
       right: 24px;
+      z-index: 1;
       font-size: 10px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--noir-500);
+      color: var(--noir-white);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
     }
 
     /* ===================== LOOKBOOK ===================== */
@@ -647,46 +985,6 @@
       position: relative;
     }
 
-    .look-bg .shape {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .look-shape {
-      background: var(--noir-700);
-      opacity: 0.7;
-    }
-
-    .ls-1 {
-      width: 45%;
-      height: 90%;
-      clip-path: polygon(20% 0%, 80% 0%, 100% 10%, 98% 100%, 2% 100%, 0% 10%);
-    }
-
-    .ls-2 {
-      width: 55%;
-      height: 80%;
-      clip-path: polygon(15% 0%, 85% 0%, 95% 12%, 100% 100%, 0% 100%, 5% 12%);
-      opacity: 0.65;
-    }
-
-    .ls-3 {
-      width: 40%;
-      height: 85%;
-      clip-path: polygon(25% 0%, 75% 0%, 90% 8%, 95% 100%, 5% 100%, 10% 8%);
-      background: #1a1a1a;
-    }
-
-    .ls-4 {
-      width: 50%;
-      height: 75%;
-      clip-path: polygon(18% 0%, 82% 0%, 92% 6%, 98% 100%, 2% 100%, 8% 6%);
-      opacity: 0.8;
-    }
-
     .look-label {
       position: absolute;
       bottom: 16px;
@@ -694,39 +992,102 @@
       font-size: 10px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--noir-500);
+      color: var(--noir-white);
+      z-index: 1;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
     }
 
-    /* ===================== TESTIMONIAL ===================== */
-    .testimonial-section {
+    /* ===================== REVIEWS ===================== */
+    .reviews-section {
       background: var(--noir-black);
-      padding: 100px 100px;
-      text-align: center;
+      padding: 100px 60px;
     }
 
-    .testimonial-quote {
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 48px;
+    }
+
+    .reviews-title {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2.8rem);
-      font-weight: 200;
-      font-style: italic;
-      line-height: 1.4;
+      font-size: 2.5rem;
+      font-weight: 300;
       letter-spacing: -0.02em;
       color: var(--noir-white);
-      max-width: 700px;
-      margin: 0 auto 40px;
     }
 
-    .testimonial-author {
+    .reviews-summary {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--noir-300);
+    }
+
+    .reviews-summary strong {
+      color: var(--noir-white);
+      font-weight: 500;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .review-card {
+      background: var(--noir-950);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .review-stars {
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      color: var(--noir-white);
+    }
+
+    .star-dim {
+      color: var(--noir-300);
+    }
+
+    .review-text {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--noir-300);
+      flex: 1;
+    }
+
+    .review-product {
+      align-self: flex-start;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--noir-300);
+      border-bottom: 1px solid var(--noir-700);
+      padding-bottom: 3px;
+    }
+
+    .review-author {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .review-name {
       font-size: 11px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--noir-500);
+      color: var(--noir-white);
     }
 
-    .testimonial-author span {
-      display: block;
-      margin-top: 4px;
-      color: var(--noir-700);
+    .review-meta {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--noir-300);
     }
 
     /* ===================== NEWSLETTER ===================== */
@@ -900,7 +1261,8 @@
       }
 
       .collection-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px 20px;
       }
 
       .editorial-strip {
@@ -938,8 +1300,12 @@
         gap: 40px;
       }
 
-      .testimonial-section {
-        padding: 80px 40px;
+      .reviews-section {
+        padding: 80px 28px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -953,6 +1319,11 @@
       }
 
       .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 14px;
+      }
+
+      .reviews-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1015,9 +1386,9 @@
       </div>
       <div class="hero-right">
         <div class="hero-image-main" style="position:relative;overflow:hidden;border-radius:4px;height:100%;">
-          <img src="img/hero.jpg"
-               alt="NOIR — modelo editorial com sobretudo preto"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(5%) contrast(1.05);"
+          <img src="img/hero-color.jpg"
+               alt="NOIR — modelo editorial"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"
                loading="eager" />
           <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 60%,rgba(0,0,0,0.3) 100%);"></div>
         </div>
@@ -1058,82 +1429,116 @@
         <span class="collection-count">32 peças disponíveis</span>
       </div>
       <div class="collection-grid">
-        <div class="product-card">
+        <div class="product-card" data-product="casaco" tabindex="0">
           <div class="product-image" style="background:#111;overflow:hidden;">
-            <img src="img/hero.jpg"
+            <img src="img/casaco.jpg"
                  alt="Casaco Oversized — NOIR"
-                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(8%) contrast(1.05);transition:transform 0.5s ease;"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.05);transition:transform 0.5s ease;"
                  loading="lazy" />
           </div>
           <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <button class="product-add" type="button">Ver produto</button>
           </div>
           <div class="product-info">
-            <span class="product-name">Casaco Oversized</span>
-            <span class="product-price">R$ 890</span>
+            <h3 class="product-name">Casaco Oversized</h3>
+            <div class="price-row">
+              <span class="product-price">R$ 890</span>
+            </div>
+            <span class="installments">em até 3x de R$ 296,67 sem juros</span>
           </div>
         </div>
-        <div class="product-card">
+        <div class="product-card" data-product="calca" tabindex="0">
           <div class="product-image" style="background:#f0f0f0;overflow:hidden;">
-            <img src="img/product1.jpg"
+            <img src="img/calca.jpg"
                  alt="Calça Slouch — NOIR"
-                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(5%) contrast(1.08);transition:transform 0.5s ease;"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.08);transition:transform 0.5s ease;"
                  loading="lazy" />
           </div>
           <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <button class="product-add" type="button">Ver produto</button>
           </div>
           <div class="product-info">
-            <span class="product-name">Calça Slouch</span>
-            <span class="product-price">R$ 520</span>
+            <h3 class="product-name">Calça Slouch</h3>
+            <div class="price-row">
+              <span class="price-old">R$ 650</span>
+              <span class="product-price">R$ 520</span>
+            </div>
+            <span class="installments">em até 3x de R$ 173,33 sem juros</span>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-visual pv-3"></div>
+        <div class="product-card" data-product="camiseta" tabindex="0">
+          <div class="product-image" style="background:#f0f0f0;overflow:hidden;">
+            <img src="img/product2.jpg"
+                 alt="Camiseta Editorial — NOIR"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.05);transition:transform 0.5s ease;"
+                 loading="lazy" />
           </div>
           <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <button class="product-add" type="button">Ver produto</button>
           </div>
           <div class="product-info">
-            <span class="product-name">Camiseta Editorial</span>
-            <span class="product-price">R$ 280</span>
+            <h3 class="product-name">Camiseta Editorial</h3>
+            <div class="price-row">
+              <span class="price-old">R$ 350</span>
+              <span class="product-price">R$ 280</span>
+            </div>
+            <span class="installments">em até 3x de R$ 93,33 sem juros</span>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-visual pv-4"></div>
+        <div class="product-card" data-product="blazer" tabindex="0">
+          <div class="product-image" style="background:#111;overflow:hidden;">
+            <img src="img/product3.jpg"
+                 alt="Blazer Estruturado — NOIR"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.05);transition:transform 0.5s ease;"
+                 loading="lazy" />
           </div>
           <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <button class="product-add" type="button">Ver produto</button>
           </div>
           <div class="product-info">
-            <span class="product-name">Blazer Estruturado</span>
-            <span class="product-price">R$ 1.240</span>
+            <h3 class="product-name">Blazer Estruturado</h3>
+            <div class="price-row">
+              <span class="product-price">R$ 1.240</span>
+            </div>
+            <span class="installments">em até 3x de R$ 413,33 sem juros</span>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-visual pv-5"></div>
+        <div class="product-card" data-product="saia" tabindex="0">
+          <div class="product-image" style="background:#f0f0f0;overflow:hidden;">
+            <img src="img/product4.jpg"
+                 alt="Saia Midi — NOIR"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.05);transition:transform 0.5s ease;"
+                 loading="lazy" />
           </div>
           <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <button class="product-add" type="button">Ver produto</button>
           </div>
           <div class="product-info">
-            <span class="product-name">Saia Midi</span>
-            <span class="product-price">R$ 460</span>
+            <h3 class="product-name">Saia Midi</h3>
+            <div class="price-row">
+              <span class="price-old">R$ 460</span>
+              <span class="product-price">R$ 368</span>
+            </div>
+            <span class="installments">em até 3x de R$ 122,67 sem juros</span>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image">
-            <div class="product-visual pv-6"></div>
+        <div class="product-card" data-product="vestido" tabindex="0">
+          <div class="product-image" style="background:#111;overflow:hidden;">
+            <img src="img/product5.jpg"
+                 alt="Vestido Minimal — NOIR"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:contrast(1.05);transition:transform 0.5s ease;"
+                 loading="lazy" />
           </div>
           <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <button class="product-add" type="button">Ver produto</button>
           </div>
           <div class="product-info">
-            <span class="product-name">Vestido Minimal</span>
-            <span class="product-price">R$ 740</span>
+            <h3 class="product-name">Vestido Minimal</h3>
+            <div class="price-row">
+              <span class="price-old">R$ 925</span>
+              <span class="product-price">R$ 740</span>
+            </div>
+            <span class="installments">em até 3x de R$ 246,67 sem juros</span>
           </div>
         </div>
       </div>
@@ -1144,16 +1549,23 @@
       <div class="ed-left">
         <p class="ed-label">Manifesto</p>
         <blockquote class="ed-quote" id="editorial-title">
-          "Preto e branco não é falta de cor — é a cor em sua forma mais honesta."
+          Não seguimos tendências.<br />Criamos presença.
         </blockquote>
-        <p class="ed-sub">
-          Na NOIR, a ausência de matiz não é limitação — é escolha radical. Cada peça é desenhada para que a forma,
-          textura e corte falem mais alto do que qualquer estampa jamais poderia.
+        <div class="ed-body">
+          <p>Acreditamos que o verdadeiro luxo não precisa anunciar sua chegada. Ele se revela nos detalhes, na precisão de um corte, na escolha de uma matéria-prima, naquilo que permanece quando todo o excesso desaparece.</p>
+          <p>Na NOIR, cada peça nasce de uma busca por equilíbrio entre arquitetura e movimento, tradição e contemporaneidade, simplicidade e identidade. Não criamos apenas roupas. Criamos uma linguagem para quem entende que estilo não é sobre ser visto — é sobre ser reconhecido.</p>
+          <p>Cada coleção é construída com intenção. Cada detalhe possui um propósito. Cada silhueta carrega uma ideia.</p>
+          <p>Recusamos o descartável. Valorizamos o que permanece.</p>
+        </div>
+        <p class="ed-sign">
+          Porque luxo não é excesso.<br /><em>É excelência.</em>
         </p>
+        <span class="ed-brand">NOIR — feita para permanecer</span>
         <a href="#lookbook" class="btn-white-outline">Ver lookbook</a>
       </div>
       <div class="ed-right">
-        <div class="ed-visual" aria-hidden="true"></div>
+        <img src="img/editorial.jpg" alt="NOIR — campanha editorial SS 2026"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
         <span class="ed-caption">SS 2026 — Campanha editorial</span>
       </div>
     </section>
@@ -1166,58 +1578,104 @@
       <div class="lookbook-grid" aria-label="Galeria lookbook">
         <div class="look-item tall">
           <div class="look-bg" style="padding-bottom: 130%">
-            <div class="shape">
-              <div class="look-shape ls-1"></div>
-            </div>
+            <img src="img/look1.jpg" alt="Lookbook NOIR — Look 01"
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
           </div>
           <span class="look-label">Look 01 — Inverno</span>
         </div>
         <div class="look-item">
           <div class="look-bg">
-            <div class="shape">
-              <div class="look-shape ls-2"></div>
-            </div>
+            <img src="img/look2.jpg" alt="Lookbook NOIR — Look 02"
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
           </div>
           <span class="look-label">Look 02</span>
         </div>
         <div class="look-item">
           <div class="look-bg">
-            <div class="shape">
-              <div class="look-shape ls-3"></div>
-            </div>
+            <img src="img/look3.jpg" alt="Lookbook NOIR — Look 03"
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
           </div>
           <span class="look-label">Look 03</span>
         </div>
         <div class="look-item">
           <div class="look-bg">
-            <div class="shape">
-              <div class="look-shape ls-4"></div>
-            </div>
+            <img src="img/look4.jpg" alt="Lookbook NOIR — Look 04"
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
           </div>
           <span class="look-label">Look 04</span>
         </div>
         <div class="look-item">
           <div class="look-bg">
-            <div class="shape">
-              <div class="look-shape ls-2"
-                style="width:45%; opacity:0.9; clip-path:polygon(10% 0%, 90% 0%, 98% 8%, 100% 100%, 0% 100%, 2% 8%)">
-              </div>
-            </div>
+            <img src="img/look5.jpg" alt="Lookbook NOIR — Look 05"
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy" />
           </div>
           <span class="look-label">Look 05</span>
         </div>
       </div>
     </section>
 
-    <!-- Testimonial -->
-    <section class="testimonial-section" aria-label="Depoimento">
-      <blockquote class="testimonial-quote">
-        "Finalmente uma marca que entende que sofisticação não precisa gritar. A NOIR faz o silêncio falar."
-      </blockquote>
-      <footer class="testimonial-author">
-        Beatriz Tavares
-        <span>Editora de Moda, Revista Vogue Brasil</span>
-      </footer>
+    <!-- Reviews -->
+    <section class="reviews-section" aria-labelledby="reviews-title">
+      <div class="reviews-header">
+        <h2 class="reviews-title" id="reviews-title">Avaliações</h2>
+        <span class="reviews-summary">Média <strong>4.9</strong> de 5 · 1.247 avaliações verificadas</span>
+      </div>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-stars" role="img" aria-label="Avaliação: 5 de 5 estrelas">★★★★★</div>
+          <p class="review-text">O casaco chegou em três dias e superou a foto do site. O caimento da lã fria é impecável — veste como se tivesse sido feito sob medida.</p>
+          <span class="review-product">Casaco Oversized</span>
+          <footer class="review-author">
+            <span class="review-name">Marina Duarte</span>
+            <span class="review-meta">Compra verificada · São Paulo, SP</span>
+          </footer>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" role="img" aria-label="Avaliação: 5 de 5 estrelas">★★★★★</div>
+          <p class="review-text">Comprei para um casamento e recebi elogios a noite inteira. A estrutura dos ombros é exatamente como descrito. Alfaiataria séria.</p>
+          <span class="review-product">Blazer Estruturado</span>
+          <footer class="review-author">
+            <span class="review-name">Ricardo Almeida</span>
+            <span class="review-meta">Compra verificada · Rio de Janeiro, RJ</span>
+          </footer>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" role="img" aria-label="Avaliação: 4 de 5 estrelas">★★★★<span class="star-dim">★</span></div>
+          <p class="review-text">Calça confortável e versátil. Ficou levemente larga no quadril, mas a troca de tamanho foi gratuita e resolvida em uma semana.</p>
+          <span class="review-product">Calça Slouch</span>
+          <footer class="review-author">
+            <span class="review-name">Camila Nunes</span>
+            <span class="review-meta">Compra verificada · Belo Horizonte, MG</span>
+          </footer>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" role="img" aria-label="Avaliação: 5 de 5 estrelas">★★★★★</div>
+          <p class="review-text">Terceira compra na NOIR. O algodão pima da camiseta é outro nível — depois de cinco lavagens continua nova. Embalagem impecável.</p>
+          <span class="review-product">Camiseta Editorial</span>
+          <footer class="review-author">
+            <span class="review-name">Felipe Sartori</span>
+            <span class="review-meta">Compra verificada · Curitiba, PR</span>
+          </footer>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" role="img" aria-label="Avaliação: 5 de 5 estrelas">★★★★★</div>
+          <p class="review-text">O vestido é o que a descrição promete: nada além do essencial. Elegante sem esforço, virou meu curinga para reuniões e jantares.</p>
+          <span class="review-product">Vestido Minimal</span>
+          <footer class="review-author">
+            <span class="review-name">Juliana Prado</span>
+            <span class="review-meta">Compra verificada · Salvador, BA</span>
+          </footer>
+        </article>
+        <article class="review-card">
+          <div class="review-stars" role="img" aria-label="Avaliação: 4 de 5 estrelas">★★★★<span class="star-dim">★</span></div>
+          <p class="review-text">Saia midi linda, o cetim tem bom caimento. Na foto o brilho não aparece — ao vivo é ainda melhor. Recomendo.</p>
+          <span class="review-product">Saia Midi</span>
+          <footer class="review-author">
+            <span class="review-name">André Vasques</span>
+            <span class="review-meta">Compra verificada · Porto Alegre, RS</span>
+          </footer>
+        </article>
+      </div>
     </section>
 
     <!-- Newsletter -->
@@ -1275,6 +1733,292 @@
       </span>
     </div>
   </footer>
+
+  <!-- Product modal -->
+  <div class="modal-backdrop" id="product-modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="pm-name">
+      <button class="modal-close" type="button" id="pm-close" aria-label="Fechar">&times;</button>
+      <div class="modal-gallery">
+        <img class="modal-main-img" id="pm-img" src="" alt="" />
+        <div class="modal-thumbs" id="pm-thumbs"></div>
+      </div>
+      <div class="modal-info">
+        <span class="product-cat" id="pm-cat"></span>
+        <h3 class="product-name" id="pm-name"></h3>
+        <p class="product-desc" id="pm-desc"></p>
+        <span class="product-badge modal-badge" id="pm-badge" hidden></span>
+        <div class="price-row">
+          <span class="price-old" id="pm-old" hidden></span>
+          <span class="product-price" id="pm-price"></span>
+        </div>
+        <span class="installments" id="pm-installments"></span>
+        <div class="size-label">
+          <span>Tamanho</span>
+          <span class="size-hint" id="pm-hint">selecione um tamanho</span>
+        </div>
+        <div class="size-options" id="pm-sizes"></div>
+        <button class="modal-add-btn" type="button" id="pm-add">Adicionar à sacola</button>
+        <ul class="modal-perks">
+          <li>Frete grátis em todo o Brasil</li>
+          <li>Troca fácil em até 30 dias</li>
+          <li>Pagamento 100% seguro</li>
+        </ul>
+        <dl class="modal-details" id="pm-details"></dl>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var PRODUCTS = {
+        casaco: {
+          name: 'Casaco Oversized',
+          cat: 'Outerwear',
+          desc: 'Lã fria de caimento pesado, ombros estruturados e fechamento oculto.',
+          images: ['img/casaco.jpg', 'img/detail.jpg', 'img/look.jpg'],
+          oldPrice: null,
+          price: 'R$ 890',
+          installments: 'em até 3x de R$ 296,67 sem juros',
+          badge: { cls: 'badge-flag', label: 'Best-seller' },
+          sizes: ['P', 'M', 'G', 'GG'],
+          details: [
+            ['Composição', '100% lã fria'],
+            ['Modelagem', 'Oversized'],
+            ['Forro', 'Cetim tom sobre tom'],
+            ['Cuidados', 'Lavagem a seco']
+          ]
+        },
+        calca: {
+          name: 'Calça Slouch',
+          cat: 'Alfaiataria',
+          desc: 'Sarja de algodão com cintura alta e barra ampla — alfaiataria relaxada.',
+          images: ['img/calca.jpg', 'img/detail.jpg', 'img/look.jpg'],
+          oldPrice: 'R$ 650',
+          price: 'R$ 520',
+          installments: 'em até 3x de R$ 173,33 sem juros',
+          badge: { cls: 'badge-sale', label: '-20%' },
+          sizes: ['36', '38', '40', '42', '44'],
+          details: [
+            ['Composição', '98% algodão, 2% elastano'],
+            ['Modelagem', 'Slouch, cintura alta'],
+            ['Fechamento', 'Zíper oculto e botão'],
+            ['Cuidados', 'Machine wash frio']
+          ]
+        },
+        camiseta: {
+          name: 'Camiseta Editorial',
+          cat: 'Malha',
+          desc: 'Algodão pima 100%, gola dupla e corte boxy com acabamento reforçado.',
+          images: ['img/product2.jpg', 'img/detail.jpg', 'img/look.jpg'],
+          oldPrice: 'R$ 350',
+          price: 'R$ 280',
+          installments: 'em até 3x de R$ 93,33 sem juros',
+          badge: { cls: 'badge-sale', label: '-20%' },
+          sizes: ['P', 'M', 'G', 'GG'],
+          details: [
+            ['Composição', '100% algodão pima'],
+            ['Modelagem', 'Boxy'],
+            ['Gola', 'Dupla costura reforçada'],
+            ['Cuidados', 'Machine wash frio']
+          ]
+        },
+        blazer: {
+          name: 'Blazer Estruturado',
+          cat: 'Alfaiataria',
+          desc: 'Ombros retos, lapela larga e forro em cetim. O tailoring definitivo.',
+          images: ['img/product3.jpg', 'img/detail.jpg', 'img/look.jpg'],
+          oldPrice: null,
+          price: 'R$ 1.240',
+          installments: 'em até 3x de R$ 413,33 sem juros',
+          badge: { cls: 'badge-flag', label: 'Edição limitada' },
+          sizes: ['P', 'M', 'G', 'GG'],
+          details: [
+            ['Composição', '70% lã, 30% poliamida'],
+            ['Modelagem', 'Estruturada, ombros retos'],
+            ['Forro', 'Cetim'],
+            ['Cuidados', 'Lavagem a seco']
+          ]
+        },
+        saia: {
+          name: 'Saia Midi',
+          cat: 'Saias',
+          desc: 'Cetim acetinado com fenda frontal e cós interno discreto.',
+          images: ['img/product4.jpg', 'img/detail.jpg', 'img/look.jpg'],
+          oldPrice: 'R$ 460',
+          price: 'R$ 368',
+          installments: 'em até 3x de R$ 122,67 sem juros',
+          badge: { cls: 'badge-sale', label: '-20%' },
+          sizes: ['36', '38', '40', '42', '44'],
+          details: [
+            ['Composição', '100% poliéster acetinado'],
+            ['Comprimento', 'Midi'],
+            ['Detalhe', 'Fenda frontal'],
+            ['Cuidados', 'Machine wash delicado']
+          ]
+        },
+        vestido: {
+          name: 'Vestido Minimal',
+          cat: 'Vestidos',
+          desc: 'Tricoline de toque seco, decote reto e fenda lateral. Nada além do essencial.',
+          images: ['img/product5.jpg', 'img/detail.jpg', 'img/look.jpg'],
+          oldPrice: 'R$ 925',
+          price: 'R$ 740',
+          installments: 'em até 3x de R$ 246,67 sem juros',
+          badge: { cls: 'badge-sale', label: '-20%' },
+          sizes: ['P', 'M', 'G', 'GG'],
+          details: [
+            ['Composição', '97% algodão, 3% elastano'],
+            ['Modelagem', 'Reta, decote reto'],
+            ['Detalhe', 'Fenda lateral'],
+            ['Cuidados', 'Machine wash frio']
+          ]
+        }
+      };
+
+      var backdrop = document.getElementById('product-modal');
+      var els = {
+        img: document.getElementById('pm-img'),
+        thumbs: document.getElementById('pm-thumbs'),
+        cat: document.getElementById('pm-cat'),
+        name: document.getElementById('pm-name'),
+        desc: document.getElementById('pm-desc'),
+        badge: document.getElementById('pm-badge'),
+        old: document.getElementById('pm-old'),
+        price: document.getElementById('pm-price'),
+        installments: document.getElementById('pm-installments'),
+        hint: document.getElementById('pm-hint'),
+        sizes: document.getElementById('pm-sizes'),
+        add: document.getElementById('pm-add'),
+        details: document.getElementById('pm-details'),
+        close: document.getElementById('pm-close')
+      };
+      var current = null;
+      var currentSize = null;
+      var lastTrigger = null;
+
+      function setImage(src) {
+        els.img.src = src;
+        Array.prototype.forEach.call(els.thumbs.children, function (btn) {
+          btn.classList.toggle('active', btn.dataset.src === src);
+        });
+      }
+
+      function render(product) {
+        current = product;
+        currentSize = null;
+        els.img.src = product.images[0];
+        els.cat.textContent = product.cat;
+        els.name.textContent = product.name;
+        els.desc.textContent = product.desc;
+        if (product.badge) {
+          els.badge.hidden = false;
+          els.badge.className = 'product-badge modal-badge ' + product.badge.cls;
+          els.badge.textContent = product.badge.label;
+        } else {
+          els.badge.hidden = true;
+        }
+        if (product.oldPrice) {
+          els.old.hidden = false;
+          els.old.textContent = product.oldPrice;
+        } else {
+          els.old.hidden = true;
+        }
+        els.price.textContent = product.price;
+        els.installments.textContent = product.installments;
+        els.hint.classList.remove('show');
+        els.add.textContent = 'Adicionar à sacola';
+        els.add.classList.remove('added');
+        els.thumbs.innerHTML = '';
+        product.images.forEach(function (src) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'modal-thumb';
+          b.dataset.src = src;
+          b.setAttribute('aria-label', 'Ver foto');
+          var t = document.createElement('img');
+          t.src = src;
+          t.alt = '';
+          b.appendChild(t);
+          b.addEventListener('click', function () { setImage(src); });
+          els.thumbs.appendChild(b);
+        });
+        setImage(product.images[0]);
+        els.sizes.innerHTML = '';
+        product.sizes.forEach(function (size) {
+          var s = document.createElement('button');
+          s.type = 'button';
+          s.className = 'size-chip';
+          s.textContent = size;
+          s.addEventListener('click', function () {
+            currentSize = size;
+            Array.prototype.forEach.call(els.sizes.children, function (chip) {
+              chip.classList.toggle('selected', chip === s);
+            });
+            els.hint.classList.remove('show');
+          });
+          els.sizes.appendChild(s);
+        });
+        els.details.innerHTML = '';
+        product.details.forEach(function (row) {
+          var wrap = document.createElement('div');
+          var dt = document.createElement('dt');
+          var dd = document.createElement('dd');
+          dt.textContent = row[0];
+          dd.textContent = row[1];
+          wrap.appendChild(dt);
+          wrap.appendChild(dd);
+          els.details.appendChild(wrap);
+        });
+      }
+
+      function openModal(id, trigger) {
+        lastTrigger = trigger || null;
+        render(PRODUCTS[id]);
+        backdrop.hidden = false;
+        document.body.classList.add('modal-open');
+        els.close.focus();
+      }
+
+      function closeModal() {
+        backdrop.hidden = true;
+        document.body.classList.remove('modal-open');
+        if (lastTrigger) lastTrigger.focus();
+      }
+
+      document.querySelectorAll('[data-product]').forEach(function (card) {
+        card.addEventListener('click', function () {
+          openModal(card.dataset.product, card);
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(card.dataset.product, card);
+          }
+        });
+      });
+
+      els.close.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !backdrop.hidden) closeModal();
+      });
+
+      els.add.addEventListener('click', function () {
+        if (!currentSize) {
+          els.hint.classList.add('show');
+          return;
+        }
+        els.add.textContent = 'Adicionado ✓ — tamanho ' + currentSize;
+        els.add.classList.add('added');
+        setTimeout(function () {
+          els.add.textContent = 'Adicionar à sacola';
+          els.add.classList.remove('added');
+        }, 1600);
+      });
+    })();
+  </script>
 
 </body>
 
