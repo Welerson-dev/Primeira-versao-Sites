@@ -582,7 +582,9 @@ button {
 .prism-canvas {
   width: 100%;
   max-width: 480px;
-  height: 420px;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .prism-label-rays {

@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prism — Cada negócio, sua própria luz</title>
+  <title>Prism</title>
   <meta name="description"
     content="A Prism cria sites com identidade visual sob medida, fundamentada em teoria das cores, tipografia e UX. Um ponto de entrada. Infinitas identidades." />
   <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
 
   <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,12 +56,10 @@
     <section class="hero" id="hero" aria-labelledby="hero-headline">
       <div class="hero-content">
         <h1 class="hero-headline" id="hero-headline">
-          Um site não é apenas um site.<br />
-          <em>É a luz do seu negócio.</em>
+          O site é a luz do seu negócio.<br />
         </h1>
         <p class="hero-sub">
-          A Prism pega o que é único no seu negócio e revela a identidade visual exata que o separa de todos os outros,
-          fundamentada em teoria das cores, não em achismo.
+          A Prism pega o que é único no seu negócio e revela a identidade visual exata que o separa de todos os outros.
         </p>
         <div class="hero-ctas">
           <a href="#vitrine" class="btn btn-primary" id="hero-cta-vitrine">Ver a vitrine</a>
@@ -68,7 +68,7 @@
 
       <!-- Prisma interativo -->
       <div class="hero-prism-wrap" aria-hidden="true">
-        <canvas id="prism-canvas" class="prism-canvas"></canvas>
+        <img src="hero-prism.png" alt="Prisma Prism" class="prism-canvas" />
       </div>
 
       <!-- Ray labels: positioned by JS as fixed overlays -->
@@ -114,13 +114,14 @@
         <div class="about-grid">
           <div class="glass-panel about-text">
             <p>
-              A maioria das empresas tem um site. Poucas têm uma identidade digital. A diferença está em partir da cor
-              certa, da tipografia certa, do ritmo visual certo.
+              A maioria das empresas tem um site. Poucas têm uma identidade digital. A diferença está na escolha da cor
+              certa, da tipografia certa e do ritmo visual certo.
             </p>
             <p>
-              O nome Prism não é uma metáfora vaga. Um prisma óptico recebe a luz branca, neutra e sem identidade, e a
+              O nome Prism não é uma metáfora. Um prisma recebe a luz branca, neutra e sem identidade, e a
               decompõe em frequências distintas.
-              <strong>Seu negócio é o ponto de entrada. O que sai do outro lado é a cor que é <em>só sua.</em></strong>
+              <strong>Seu negócio é o ponto de entrada. A Prism transforma o que é único nele em uma identidade que é
+                <em>só sua.</em></strong>
             </p>
             <a href="#vitrine" class="btn btn-ghost-dark" style="margin-top:1.5rem;display:inline-block">Ver a
               vitrine</a>
@@ -224,24 +225,24 @@
 
           <!-- Card 1: Moda -->
           <article class="vitrine-card" id="card-fashion" data-nicho="fashion">
-            <a href="fashion/index.html" class="card-link" aria-label="Ver site completo: Loja de Roupas NOIR">
+            <a href="fashion/index.html" class="card-link" aria-label="Ver site completo: Loja de Roupas VIVA">
               <div class="card-thumb">
-                <img src="fashion/img/hero.jpg" alt="NOIR — Loja de Roupas editorial" loading="lazy" />
+                <img src="fashion/img/hero.jpg" alt="VIVA — Loja de Roupas colorida e alegre" loading="lazy" />
                 <div class="card-thumb-overlay"></div>
               </div>
               <div class="card-inner">
                 <div class="card-header">
-                  <span class="card-tag">Paleta monocromática</span>
+                  <span class="card-tag">Paleta vibrante</span>
                   <div class="card-palette-dots" aria-hidden="true">
-                    <span style="background:#0D0D0D"></span>
-                    <span style="background:#333333"></span>
-                    <span style="background:#B3B3B3"></span>
-                    <span style="background:#FFFFFF; border: 1px solid #ddd"></span>
+                    <span style="background:#FF3CAC"></span>
+                    <span style="background:#F9C74F"></span>
+                    <span style="background:#4ECDC4"></span>
+                    <span style="background:#A855F7"></span>
                   </div>
                 </div>
                 <h3 class="card-title">Loja de Roupas</h3>
-                <p class="card-desc">Escala monocromática — contraste máximo sem matiz. O vocabulário da moda editorial
-                  de luxo.</p>
+                <p class="card-desc">Paleta vibrante e alegre — rosa, amarelo, menta e roxo que expressam personalidade
+                  e celebram a cor.</p>
                 <span class="card-cta-hint" aria-hidden="true">Ver site completo →</span>
               </div>
               <div class="card-glow card-glow-fashion" aria-hidden="true"></div>
@@ -320,7 +321,7 @@
                   </div>
                 </div>
                 <h3 class="card-title">Odontologia</h3>
-                <p class="card-desc">Branco + azul: assepsia e credibilidade clínica que reduzem ansiedade e constroem
+                <p class="card-desc">Branco + azul: assepsia e credibilidade clínica que reduzem a ansiedade e constroem
                   confiança.</p>
                 <span class="card-cta-hint" aria-hidden="true">Ver site completo →</span>
               </div>
@@ -342,49 +343,65 @@
         <div class="modal-preview-frame">
           <!-- Fashion Site Preview -->
           <div class="preview-site preview-fashion">
-            <header class="pf-header">
-              <span class="pf-logo">NOIR</span>
+            <header class="pf-header" style="background:#1A1A2E;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <span class="pf-logo"
+                style="background:linear-gradient(135deg,#FF3CAC,#F9C74F,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">VIVA</span>
               <nav class="pf-nav">
-                <a href="#">Coleção</a><a href="#">Sobre</a><a href="#">Contato</a>
+                <a href="#" style="color:rgba(255,255,255,0.6);">Coleção</a><a href="#"
+                  style="color:rgba(255,255,255,0.6);">Sobre</a><a href="#"
+                  style="color:rgba(255,255,255,0.6);">Contato</a>
               </nav>
             </header>
-            <section class="pf-hero">
+            <section class="pf-hero" style="background:linear-gradient(145deg,#1A1A2E,#3D2164);">
               <div class="pf-hero-text">
-                <p class="pf-eyebrow">SS 2026</p>
-                <h2>A ausência<br /><em>de cor</em><br />é a cor.</h2>
-                <a href="#" class="pf-btn">Ver coleção</a>
+                <p class="pf-eyebrow" style="color:#F9C74F;">Verão 2026</p>
+                <h2 style="color:#fff;">A sua cor<br /><em
+                    style="background:linear-gradient(135deg,#FF3CAC,#4ECDC4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">fala
+                    por você.</em></h2>
+                <a href="#" class="pf-btn"
+                  style="background:linear-gradient(135deg,#FF3CAC,#A855F7);color:#fff;border-radius:30px;">Ver
+                  coleção</a>
               </div>
               <div class="pf-hero-image">
-                <div class="pf-model-placeholder">
-                  <div class="pf-model-shape"></div>
+                <div class="pf-model-placeholder"
+                  style="background:linear-gradient(135deg,rgba(255,60,172,0.3),rgba(78,205,196,0.3));border-radius:50%;">
+                  <div class="pf-model-shape" style="background:linear-gradient(160deg,#FF3CAC,#A855F7);"></div>
                 </div>
               </div>
             </section>
-            <section class="pf-grid-section">
+            <section class="pf-grid-section" style="background:#FFFAF7;">
               <div class="pf-product-grid">
-                <div class="pf-product pf-p1"><span>Casaco Oversized</span><span class="pf-price">R$ 890</span></div>
-                <div class="pf-product pf-p2"><span>Calça Slouch</span><span class="pf-price">R$ 520</span></div>
-                <div class="pf-product pf-p3"><span>Camiseta Editorial</span><span class="pf-price">R$ 280</span></div>
+                <div class="pf-product pf-p1" style="background:linear-gradient(135deg,#FFE0F5,#F0CFFF);"><span
+                    style="color:#1A1A2E;">Vestido Floral</span><span class="pf-price"
+                    style="background:linear-gradient(135deg,#FF3CAC,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">R$
+                    490</span></div>
+                <div class="pf-product pf-p2" style="background:linear-gradient(135deg,#FFF5D6,#FFE0D0);"><span
+                    style="color:#1A1A2E;">Conjunto Colorblock</span><span class="pf-price"
+                    style="background:linear-gradient(135deg,#F9C74F,#FF6B6B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">R$
+                    620</span></div>
+                <div class="pf-product pf-p3" style="background:linear-gradient(135deg,#D0F7F5,#D0E8FF);"><span
+                    style="color:#1A1A2E;">Blusa Tie-Dye</span><span class="pf-price"
+                    style="background:linear-gradient(135deg,#4ECDC4,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">R$
+                    280</span></div>
               </div>
             </section>
-            <footer class="pf-footer">
-              <span>© NOIR 2026</span>
-              <span>Moda com intenção.</span>
+            <footer class="pf-footer" style="background:#1A1A2E;">
+              <span style="color:rgba(255,255,255,0.4);">© VIVA 2026</span>
+              <span style="color:rgba(255,255,255,0.4);">Cor que celebra.</span>
             </footer>
           </div>
         </div>
         <div class="modal-info">
-          <p class="modal-tag">Paleta monocromática</p>
-          <h3 id="modal-fashion-title">Loja de Roupas — NOIR</h3>
-          <p>Escala de preto a branco: contraste máximo sem introduzir matiz, liberando a fotografia do produto para ser
-            o único ponto de saturação visual. Grid editorial, área negativa generosa e transições secas reforçam
-            exclusividade e atemporalidade.</p>
+          <p class="modal-tag">Paleta vibrante</p>
+          <h3 id="modal-fashion-title">Loja de Roupas — VIVA</h3>
+          <p>Rosa vibrante, amarelo sol, verde-menta e roxo: uma paleta análoga expandida que transmite alegria,
+            jovialidade e expressão pessoal. As cores trabalham juntas em harmonia sem perder energia nem identidade.
+          </p>
           <div class="modal-palette">
-            <div class="palette-chip" style="background:#0D0D0D" title="#0D0D0D — Fundo/destaque"></div>
-            <div class="palette-chip" style="background:#333333" title="#333333 — Texto"></div>
-            <div class="palette-chip" style="background:#B3B3B3" title="#B3B3B3 — Secundário"></div>
-            <div class="palette-chip" style="background:#FFFFFF; border:1px solid #eee"
-              title="#FFFFFF — Fundo negativo"></div>
+            <div class="palette-chip" style="background:#FF3CAC" title="#FF3CAC — Rosa vibrante"></div>
+            <div class="palette-chip" style="background:#F9C74F" title="#F9C74F — Amarelo sol"></div>
+            <div class="palette-chip" style="background:#4ECDC4" title="#4ECDC4 — Verde-menta"></div>
+            <div class="palette-chip" style="background:#A855F7" title="#A855F7 — Roxo"></div>
           </div>
         </div>
       </div>
@@ -408,7 +425,7 @@
               <div class="pg-hero-content">
                 <span class="pg-badge">Vagas Limitadas</span>
                 <h2>Quebre<br /><em>seus</em><br />limites.</h2>
-                <p>Treinamento de alta intensidade. Resultados sem desculpa.</p>
+                <p>Treinamento de alta intensidade. Resultados sem desculpas.</p>
                 <a href="#" class="pg-btn">Começar agora</a>
               </div>
               <div class="pg-stats">
@@ -539,7 +556,7 @@
           <p class="modal-tag">Complementar frio</p>
           <h3 id="modal-dental-title">Odontologia — ClareDent</h3>
           <p>Branco + azul é o par cromático clássico de credibilidade clínica. O azul é a cor que estudos de psicologia
-            associam consistentemente a confiança, competência e calma — reduzir a ansiedade do paciente é parte do
+            associam consistentemente à confiança, à competência e à calma — reduzir a ansiedade do paciente é parte do
             trabalho de marketing em odontologia.</p>
           <div class="modal-palette">
             <div class="palette-chip" style="background:#FFFFFF; border:1px solid #eee" title="#FFFFFF — Fundo"></div>
@@ -642,7 +659,7 @@
       <div class="container">
         <div class="section-header">
           <p class="section-eyebrow">Planos</p>
-          <h2 class="section-title" id="pricing-title">Escolha o ponto de entrada.</h2>
+          <h2 class="section-title" id="pricing-title">Escolha o ponto de entrada</h2>
         </div>
         <div class="pricing-grid">
           <div class="glass-panel pricing-card" id="plan-vitrine">
@@ -736,7 +753,7 @@
           <div class="form-group">
             <label for="contact-message">Mensagem</label>
             <textarea id="contact-message" name="message" rows="4"
-              placeholder="Conta um pouco sobre o seu negócio e o que você está buscando..." required></textarea>
+              placeholder="Conte um pouco sobre o seu negócio e o que você está buscando..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full" id="contact-submit">Enviar mensagem</button>
           <p class="form-note">Respondemos em até 24 horas.</p>
