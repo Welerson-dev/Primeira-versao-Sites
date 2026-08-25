@@ -487,3 +487,34 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
   counters.forEach(c => obs.observe(c));
 })();
+
+// =============================================
+// 10. FORM VALIDATION
+// =============================================
+(function initFormValidation() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fields = form.querySelectorAll('[required]');
+    let valid = true;
+
+    fields.forEach(f => {
+      if (!f.value.trim()) {
+        valid = false;
+        f.style.borderColor = '#e63946';
+      } else {
+        f.style.borderColor = '';
+      }
+    });
+
+    if (!valid) {
+      alert('Por favor, preencha os campos obrigatórios para enviar a mensagem.');
+      return;
+    }
+
+    alert('Mensagem enviada com sucesso! Respondemos em até 24 horas.');
+    form.reset();
+  });
+})();

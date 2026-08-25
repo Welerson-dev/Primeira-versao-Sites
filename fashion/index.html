@@ -61,7 +61,8 @@
       color: inherit;
     }
 
-    ul, ol {
+    ul,
+    ol {
       list-style: none;
     }
 
@@ -78,7 +79,7 @@
     /* ===================== BACK BADGE ===================== */
     .back-badge {
       position: fixed;
-      top: 20px;
+      bottom: 24px;
       left: 24px;
       z-index: 200;
       display: inline-flex;
@@ -225,29 +226,40 @@
     }
 
     .hero-blob-1 {
-      width: 300px; height: 300px;
+      width: 300px;
+      height: 300px;
       background: var(--viva-primary);
-      top: -80px; left: -80px;
+      top: -80px;
+      left: -80px;
       animation-delay: 0s;
     }
 
     .hero-blob-2 {
-      width: 250px; height: 250px;
+      width: 250px;
+      height: 250px;
       background: var(--viva-secondary);
-      bottom: 80px; right: -60px;
+      bottom: 80px;
+      right: -60px;
       animation-delay: -3s;
     }
 
     .hero-blob-3 {
-      width: 200px; height: 200px;
+      width: 200px;
+      height: 200px;
       background: var(--viva-mint);
-      top: 40%; left: 60%;
+      top: 40%;
+      left: 60%;
       animation-delay: -6s;
     }
 
     @keyframes blobFloat {
-      from { transform: translate(0, 0) scale(1); }
-      to   { transform: translate(20px, 20px) scale(1.1); }
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(20px, 20px) scale(1.1);
+      }
     }
 
     .hero-collection-label {
@@ -314,15 +326,15 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      border-bottom: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       padding-bottom: 2px;
       transition: color 150ms, border-color 150ms;
     }
 
     .btn-ghost-light:hover {
       color: #fff;
-      border-color: rgba(255,255,255,0.8);
+      border-color: rgba(255, 255, 255, 0.8);
     }
 
     .hero-right {
@@ -344,10 +356,9 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg,
-        rgba(255, 60, 172, 0.12) 0%,
-        rgba(249, 199, 79, 0.08) 50%,
-        rgba(78, 205, 196, 0.1) 100%
-      );
+          rgba(255, 60, 172, 0.12) 0%,
+          rgba(249, 199, 79, 0.08) 50%,
+          rgba(78, 205, 196, 0.1) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -386,7 +397,7 @@
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -400,12 +411,19 @@
     }
 
     @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .marquee-track { animation: none; }
+      .marquee-track {
+        animation: none;
+      }
     }
 
     /* ===================== COLLECTION ===================== */
@@ -489,46 +507,38 @@
       z-index: 1;
     }
 
-    .pv-1 { background: linear-gradient(160deg, #FF3CAC, #A855F7); clip-path: polygon(15% 0%, 85% 0%, 95% 8%, 100% 100%, 0% 100%, 5% 8%); }
-    .pv-2 { background: linear-gradient(160deg, #F9C74F, #FF6B6B); clip-path: polygon(20% 0%, 80% 0%, 92% 5%, 95% 20%, 88% 45%, 100% 100%, 0% 100%, 12% 45%, 5% 20%, 8% 5%); }
-    .pv-3 { background: linear-gradient(160deg, #4ECDC4, #A855F7); clip-path: polygon(25% 0%, 75% 0%, 88% 6%, 95% 22%, 90% 55%, 98% 100%, 2% 100%, 10% 55%, 5% 22%, 12% 6%); }
-    .pv-4 { background: linear-gradient(160deg, #FF8C69, #FF3CAC); clip-path: polygon(18% 0%, 82% 0%, 94% 7%, 98% 30%, 92% 60%, 100% 100%, 0% 100%, 8% 60%, 2% 30%, 6% 7%); }
-    .pv-5 { background: linear-gradient(160deg, #F9C74F, #4ECDC4); clip-path: polygon(22% 0%, 78% 0%, 90% 5%, 97% 25%, 88% 50%, 95% 100%, 5% 100%, 12% 50%, 3% 25%, 10% 5%); }
-    .pv-6 { background: linear-gradient(160deg, #A855F7, #FF6B6B); clip-path: polygon(20% 0%, 80% 0%, 93% 6%, 100% 18%, 95% 40%, 100% 100%, 0% 100%, 5% 40%, 0% 18%, 7% 6%); }
+    .pv-1 {
+      background: linear-gradient(160deg, #FF3CAC, #A855F7);
+      clip-path: polygon(15% 0%, 85% 0%, 95% 8%, 100% 100%, 0% 100%, 5% 8%);
+    }
+
+    .pv-2 {
+      background: linear-gradient(160deg, #F9C74F, #FF6B6B);
+      clip-path: polygon(20% 0%, 80% 0%, 92% 5%, 95% 20%, 88% 45%, 100% 100%, 0% 100%, 12% 45%, 5% 20%, 8% 5%);
+    }
+
+    .pv-3 {
+      background: linear-gradient(160deg, #4ECDC4, #A855F7);
+      clip-path: polygon(25% 0%, 75% 0%, 88% 6%, 95% 22%, 90% 55%, 98% 100%, 2% 100%, 10% 55%, 5% 22%, 12% 6%);
+    }
+
+    .pv-4 {
+      background: linear-gradient(160deg, #FF8C69, #FF3CAC);
+      clip-path: polygon(18% 0%, 82% 0%, 94% 7%, 98% 30%, 92% 60%, 100% 100%, 0% 100%, 8% 60%, 2% 30%, 6% 7%);
+    }
+
+    .pv-5 {
+      background: linear-gradient(160deg, #F9C74F, #4ECDC4);
+      clip-path: polygon(22% 0%, 78% 0%, 90% 5%, 97% 25%, 88% 50%, 95% 100%, 5% 100%, 12% 50%, 3% 25%, 10% 5%);
+    }
+
+    .pv-6 {
+      background: linear-gradient(160deg, #A855F7, #FF6B6B);
+      clip-path: polygon(20% 0%, 80% 0%, 93% 6%, 100% 18%, 95% 40%, 100% 100%, 0% 100%, 5% 40%, 0% 18%, 7% 6%);
+    }
 
     .product-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(26, 26, 46, 0);
-      transition: background 300ms;
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
-      z-index: 2;
-    }
-
-    .product-card:hover .product-overlay {
-      background: rgba(26, 26, 46, 0.25);
-    }
-
-    .product-add {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #fff;
-      padding: 10px 20px;
-      background: var(--grad-card);
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 300ms, transform 300ms var(--ease-out);
-    }
-
-    .product-card:hover .product-add {
-      opacity: 1;
-      transform: translateY(0);
+      display: none;
     }
 
     .product-info {
@@ -578,7 +588,8 @@
       position: absolute;
       top: -100px;
       right: -100px;
-      width: 400px; height: 400px;
+      width: 400px;
+      height: 400px;
       background: radial-gradient(circle, rgba(255, 60, 172, 0.25) 0%, transparent 65%);
     }
 
@@ -606,7 +617,7 @@
     .ed-sub {
       font-size: 14px;
       line-height: 1.75;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       max-width: 380px;
       position: relative;
       z-index: 1;
@@ -616,11 +627,11 @@
       align-self: flex-start;
       display: inline-block;
       padding: 12px 32px;
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       border-radius: 40px;
       transition: all 200ms;
       position: relative;
@@ -657,21 +668,27 @@
     }
 
     .ed-c1 {
-      width: 200px; height: 200px;
+      width: 200px;
+      height: 200px;
       background: var(--viva-primary);
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
     }
 
     .ed-c2 {
-      width: 160px; height: 160px;
+      width: 160px;
+      height: 160px;
       background: var(--viva-secondary);
-      bottom: 0; right: 0;
+      bottom: 0;
+      right: 0;
     }
 
     .ed-c3 {
-      width: 120px; height: 120px;
+      width: 120px;
+      height: 120px;
       background: var(--viva-mint);
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
     }
 
@@ -714,7 +731,7 @@
     .lookbook-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-rows: 300px 300px;
       gap: 16px;
     }
 
@@ -722,15 +739,18 @@
       overflow: hidden;
       position: relative;
       border-radius: 16px;
+      min-height: 300px;
     }
 
     .look-item.tall {
       grid-row: span 2;
+      min-height: 616px;
     }
 
     .look-bg {
       width: 100%;
-      padding-bottom: 100%;
+      height: 100%;
+      min-height: inherit;
       position: relative;
     }
 
@@ -748,11 +768,25 @@
       opacity: 1;
     }
 
-    .lbg-1 { background: linear-gradient(145deg, #FFE0F5, #F0CFFF); }
-    .lbg-2 { background: linear-gradient(145deg, #FFF5D6, #FFE0D0); }
-    .lbg-3 { background: linear-gradient(145deg, #D0F7F5, #D0E8FF); }
-    .lbg-4 { background: linear-gradient(145deg, #FFE8E8, #FFD0F0); }
-    .lbg-5 { background: linear-gradient(145deg, #E8FFE8, #D0F7F0); }
+    .lbg-1 {
+      background: linear-gradient(145deg, #FFE0F5, #F0CFFF);
+    }
+
+    .lbg-2 {
+      background: linear-gradient(145deg, #FFF5D6, #FFE0D0);
+    }
+
+    .lbg-3 {
+      background: linear-gradient(145deg, #D0F7F5, #D0E8FF);
+    }
+
+    .lbg-4 {
+      background: linear-gradient(145deg, #FFE8E8, #FFD0F0);
+    }
+
+    .lbg-5 {
+      background: linear-gradient(145deg, #E8FFE8, #D0F7F0);
+    }
 
     .look-shape {
       border-radius: 12px 12px 0 0;
@@ -760,25 +794,29 @@
     }
 
     .ls-1 {
-      width: 45%; height: 90%;
+      width: 45%;
+      height: 90%;
       background: linear-gradient(160deg, #FF3CAC, #A855F7);
       clip-path: polygon(20% 0%, 80% 0%, 100% 10%, 98% 100%, 2% 100%, 0% 10%);
     }
 
     .ls-2 {
-      width: 55%; height: 80%;
+      width: 55%;
+      height: 80%;
       background: linear-gradient(160deg, #F9C74F, #FF6B6B);
       clip-path: polygon(15% 0%, 85% 0%, 95% 12%, 100% 100%, 0% 100%, 5% 12%);
     }
 
     .ls-3 {
-      width: 40%; height: 85%;
+      width: 40%;
+      height: 85%;
       background: linear-gradient(160deg, #4ECDC4, #A855F7);
       clip-path: polygon(25% 0%, 75% 0%, 90% 8%, 95% 100%, 5% 100%, 10% 8%);
     }
 
     .ls-4 {
-      width: 50%; height: 75%;
+      width: 50%;
+      height: 75%;
       background: linear-gradient(160deg, #FF8C69, #FF3CAC);
       clip-path: polygon(18% 0%, 82% 0%, 92% 6%, 98% 100%, 2% 100%, 8% 6%);
     }
@@ -791,7 +829,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--viva-muted);
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
       padding: 4px 10px;
       border-radius: 20px;
     }
@@ -838,7 +876,7 @@
     .testimonial-author span {
       display: block;
       margin-top: 4px;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
 
     /* ===================== NEWSLETTER ===================== */
@@ -930,7 +968,7 @@
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 60px;
       padding-bottom: 60px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       margin-bottom: 40px;
     }
 
@@ -950,7 +988,7 @@
     .footer-brand-desc {
       font-size: 13px;
       line-height: 1.75;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
       max-width: 260px;
     }
 
@@ -958,7 +996,7 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255, 255, 255, 0.35);
       margin-bottom: 20px;
     }
 
@@ -970,7 +1008,7 @@
 
     .footer-links a {
       font-size: 13px;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       transition: color 150ms;
     }
 
@@ -983,13 +1021,13 @@
       justify-content: space-between;
       align-items: center;
       font-size: 11px;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255, 255, 255, 0.3);
       letter-spacing: 0.06em;
     }
 
     .footer-prism a {
-      color: rgba(255,255,255,0.55);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255, 255, 255, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       transition: color 150ms, border-color 150ms;
     }
 
@@ -1000,32 +1038,54 @@
 
     /* ===================== RESPONSIVE ===================== */
     @media (max-width: 1024px) {
-      .site-header { padding: 18px 28px; }
+      .site-header {
+        padding: 18px 28px;
+      }
 
-      .hero { grid-template-columns: 1fr; }
+      .hero {
+        grid-template-columns: 1fr;
+      }
 
       .hero-left {
         min-height: 60vh;
         padding: 60px 40px;
       }
 
-      .hero-right { min-height: 50vh; }
+      .hero-right {
+        min-height: 50vh;
+      }
 
-      .section-collection { padding: 60px 28px; }
+      .section-collection {
+        padding: 60px 28px;
+      }
 
-      .collection-grid { grid-template-columns: repeat(2, 1fr); }
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-      .editorial-strip { grid-template-columns: 1fr; }
+      .editorial-strip {
+        grid-template-columns: 1fr;
+      }
 
-      .ed-left { padding: 60px 40px; }
+      .ed-left {
+        padding: 60px 40px;
+      }
 
-      .ed-right { min-height: 360px; }
+      .ed-right {
+        min-height: 360px;
+      }
 
-      .lookbook { padding: 60px 28px; }
+      .lookbook {
+        padding: 60px 28px;
+      }
 
-      .lookbook-grid { grid-template-columns: 1fr 1fr; }
+      .lookbook-grid {
+        grid-template-columns: 1fr 1fr;
+      }
 
-      .look-item.tall { grid-row: auto; }
+      .look-item.tall {
+        grid-row: auto;
+      }
 
       .newsletter {
         grid-template-columns: 1fr;
@@ -1038,19 +1098,31 @@
         gap: 40px;
       }
 
-      .testimonial-section { padding: 80px 40px; }
+      .testimonial-section {
+        padding: 80px 40px;
+      }
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .nav-links {
+        display: none;
+      }
 
-      .hero-left { padding: 50px 28px; }
+      .hero-left {
+        padding: 50px 28px;
+      }
 
-      .collection-grid { grid-template-columns: 1fr; }
+      .collection-grid {
+        grid-template-columns: 1fr;
+      }
 
-      .lookbook-grid { grid-template-columns: 1fr; }
+      .lookbook-grid {
+        grid-template-columns: 1fr;
+      }
 
-      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
 
       .footer-bottom {
         flex-direction: column;
@@ -1104,10 +1176,9 @@
       </div>
       <div class="hero-right">
         <div class="hero-image-main" style="position:relative;overflow:hidden;height:100%;">
-          <img src="img/hero.jpg"
-               alt="VIVA — modelo com roupas coloridas e alegres"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(1.2) contrast(1.05);"
-               loading="eager" />
+          <img src="img/hero-color.jpg" alt="VIVA — modelo com roupas coloridas e alegres"
+            style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(1.2) contrast(1.05);"
+            loading="eager" />
           <div class="hero-color-burst"></div>
         </div>
         <div class="hero-info-strip">
@@ -1146,42 +1217,33 @@
 
         <div class="product-card">
           <div class="product-image" style="background:linear-gradient(135deg,#FFE0F5,#F0CFFF);overflow:hidden;">
-            <img src="img/hero.jpg"
-                 alt="Vestido Floral — VIVA"
-                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.15) contrast(1.05);transition:transform 0.5s ease;"
-                 loading="lazy" />
-          </div>
-          <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <img src="img/casaco.jpg" alt="Casaco Colorblock — VIVA"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.15) contrast(1.05);transition:transform 0.5s ease;"
+              loading="lazy" />
           </div>
           <div class="product-info">
-            <span class="product-name">Vestido Floral</span>
+            <span class="product-name">Casaco Colorblock</span>
             <span class="product-price">R$ 490</span>
           </div>
         </div>
 
         <div class="product-card">
           <div class="product-image" style="background:linear-gradient(135deg,#FFF5D6,#FFE0D0);overflow:hidden;">
-            <img src="img/product1.jpg"
-                 alt="Conjunto Colorblock — VIVA"
-                 style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.2) contrast(1.05);transition:transform 0.5s ease;"
-                 loading="lazy" />
-          </div>
-          <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+            <img src="img/calca.jpg" alt="Calça Vibrante — VIVA"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.2) contrast(1.05);transition:transform 0.5s ease;"
+              loading="lazy" />
           </div>
           <div class="product-info">
-            <span class="product-name">Conjunto Colorblock</span>
+            <span class="product-name">Calça Vibrante</span>
             <span class="product-price">R$ 620</span>
           </div>
         </div>
 
         <div class="product-card">
-          <div class="product-image" style="background:linear-gradient(135deg,#D0F7F5,#D0E8FF);">
-            <div class="product-visual pv-3" style="position:relative;z-index:1;"></div>
-          </div>
-          <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+          <div class="product-image" style="background:linear-gradient(135deg,#D0F7F5,#D0E8FF);overflow:hidden;">
+            <img src="img/product2.jpg" alt="Blusa Tie-Dye — VIVA"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.15) contrast(1.05);transition:transform 0.5s ease;"
+              loading="lazy" />
           </div>
           <div class="product-info">
             <span class="product-name">Blusa Tie-Dye</span>
@@ -1190,11 +1252,10 @@
         </div>
 
         <div class="product-card">
-          <div class="product-image" style="background:linear-gradient(135deg,#FFE8E8,#FFD0F0);">
-            <div class="product-visual pv-4" style="position:relative;z-index:1;"></div>
-          </div>
-          <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+          <div class="product-image" style="background:linear-gradient(135deg,#FFE8E8,#FFD0F0);overflow:hidden;">
+            <img src="img/product3.jpg" alt="Saia Estampada — VIVA"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.15) contrast(1.05);transition:transform 0.5s ease;"
+              loading="lazy" />
           </div>
           <div class="product-info">
             <span class="product-name">Saia Estampada</span>
@@ -1203,11 +1264,10 @@
         </div>
 
         <div class="product-card">
-          <div class="product-image" style="background:linear-gradient(135deg,#E8FFE8,#D0F7F0);">
-            <div class="product-visual pv-5" style="position:relative;z-index:1;"></div>
-          </div>
-          <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+          <div class="product-image" style="background:linear-gradient(135deg,#E8FFE8,#D0F7F0);overflow:hidden;">
+            <img src="img/product4.jpg" alt="Calça Wide Leg — VIVA"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.15) contrast(1.05);transition:transform 0.5s ease;"
+              loading="lazy" />
           </div>
           <div class="product-info">
             <span class="product-name">Calça Wide Leg</span>
@@ -1216,11 +1276,10 @@
         </div>
 
         <div class="product-card">
-          <div class="product-image" style="background:linear-gradient(135deg,#F5D0FF,#FFD0E8);">
-            <div class="product-visual pv-6" style="position:relative;z-index:1;"></div>
-          </div>
-          <div class="product-overlay">
-            <button class="product-add" type="button">Adicionar ao carrinho</button>
+          <div class="product-image" style="background:linear-gradient(135deg,#F5D0FF,#FFD0E8);overflow:hidden;">
+            <img src="img/product5.jpg" alt="Cropped Neon — VIVA"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(1.15) contrast(1.05);transition:transform 0.5s ease;"
+              loading="lazy" />
           </div>
           <div class="product-info">
             <span class="product-name">Cropped Neon</span>
@@ -1243,13 +1302,12 @@
         </p>
         <a href="#lookbook" class="btn-viva-outline">Ver lookbook</a>
       </div>
-      <div class="ed-right">
-        <div class="ed-circles" aria-hidden="true">
-          <div class="ed-circle ed-c1"></div>
-          <div class="ed-circle ed-c2"></div>
-          <div class="ed-circle ed-c3"></div>
-        </div>
-        <span class="ed-caption">Verão 2026 — Campanha editorial</span>
+      <div class="ed-right" style="overflow:hidden;position:relative;">
+        <img src="img/editorial.jpg" alt="Editorial VIVA"
+          style="width:50%;height:100%;object-fit:cover;object-position:center;" />
+        <span class="ed-caption"
+          style="position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,0.5);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;">Verão
+          2026 — Campanha editorial</span>
       </div>
     </section>
 
@@ -1259,48 +1317,24 @@
       </div>
       <div class="lookbook-grid" aria-label="Galeria lookbook">
         <div class="look-item tall">
-          <div class="look-bg" style="padding-bottom: 130%">
-            <div class="look-color-bg lbg-1"></div>
-            <div class="shape">
-              <div class="look-shape ls-1"></div>
-            </div>
-          </div>
+          <img src="img/look1.jpg" alt="Look 01 — Verão"
+            style="width:100%;height:100%;object-fit:cover;display:block;" />
           <span class="look-label">Look 01 — Verão</span>
         </div>
         <div class="look-item">
-          <div class="look-bg">
-            <div class="look-color-bg lbg-2"></div>
-            <div class="shape">
-              <div class="look-shape ls-2"></div>
-            </div>
-          </div>
+          <img src="img/look2.jpg" alt="Look 02" style="width:100%;height:100%;object-fit:cover;display:block;" />
           <span class="look-label">Look 02</span>
         </div>
         <div class="look-item">
-          <div class="look-bg">
-            <div class="look-color-bg lbg-3"></div>
-            <div class="shape">
-              <div class="look-shape ls-3"></div>
-            </div>
-          </div>
+          <img src="img/look3.jpg" alt="Look 03" style="width:100%;height:100%;object-fit:cover;display:block;" />
           <span class="look-label">Look 03</span>
         </div>
         <div class="look-item">
-          <div class="look-bg">
-            <div class="look-color-bg lbg-4"></div>
-            <div class="shape">
-              <div class="look-shape ls-4"></div>
-            </div>
-          </div>
+          <img src="img/look4.jpg" alt="Look 04" style="width:100%;height:100%;object-fit:cover;display:block;" />
           <span class="look-label">Look 04</span>
         </div>
         <div class="look-item">
-          <div class="look-bg">
-            <div class="look-color-bg lbg-5"></div>
-            <div class="shape">
-              <div class="look-shape ls-2" style="background:linear-gradient(160deg,#4ECDC4,#F9C74F);width:45%;"></div>
-            </div>
-          </div>
+          <img src="img/look5.jpg" alt="Look 05" style="width:100%;height:100%;object-fit:cover;display:block;" />
           <span class="look-label">Look 05</span>
         </div>
       </div>
@@ -1319,7 +1353,8 @@
     <section class="newsletter" id="contato" aria-labelledby="newsletter-title">
       <div class="newsletter-text">
         <h3 id="newsletter-title">Fique por <em>dentro.</em></h3>
-        <p>Acesso antecipado a lançamentos, paletas exclusivas e novidades da coleção. Sem spam — apenas cor e alegria.</p>
+        <p>Acesso antecipado a lançamentos, paletas exclusivas e novidades da coleção. Sem spam — apenas cor e alegria.
+        </p>
       </div>
       <form class="newsletter-form" novalidate aria-label="Inscrição na newsletter">
         <input type="email" class="newsletter-input" placeholder="seu@email.com" aria-label="E-mail para newsletter" />
@@ -1370,6 +1405,20 @@
     </div>
   </footer>
 
+  <script>
+    document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const input = this.querySelector('.newsletter-input');
+      if (!input.value.trim()) {
+        input.style.borderColor = '#e63946';
+        alert('Por favor, informe seu e-mail para se inscrever.');
+        return;
+      }
+      input.style.borderColor = '';
+      alert('Inscrição realizada com sucesso!');
+      this.reset();
+    });
+  </script>
 </body>
 
 </html>
